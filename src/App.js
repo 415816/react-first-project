@@ -1,16 +1,15 @@
 //import logo from './logo.svg';
 import './App.css';
-import Avatar from './components/Avatar';
-import Bod from './components/Bod';
 import Header from './components/Header';
-
-
+import SideBar from './components/SideBar';
+import MyPage from './components/MyPage';
 
 const App = () => {
   return (
     <div className="main-div">
       <Header />
-      <Bod />
+      <SideBar />
+      <MyPage />
     </div>
   );
 }
