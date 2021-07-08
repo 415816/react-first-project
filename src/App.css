@@ -45,7 +45,7 @@ body{
   background-color: #edeef0;
 }
 
-.heade {
+/* .heade {
   position: relative;
   width: 100%;
   height: 60px;
@@ -57,7 +57,7 @@ body{
   width: 100%;
   position: absolute;
   top: -350px;
-}
+} */
 
 .main-div{
   margin: 0 auto;
@@ -71,13 +71,7 @@ body{
 
 }
 
-.side-bar{
-  width: 120px;
-  margin-right: 20px;
-  padding: 5px;
-  background-color: #fff;
-  border-radius: 5px;
-}
+
 
 .my-page{
   background-color: #fff;
@@ -85,61 +79,5 @@ body{
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 5px;
-}
-
-.side-bar div{
-  margin-bottom: 5px;
-  margin: 5px;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.side-bar div:hover{
-  cursor: pointer;
-  background-color: #edeef0;
-}
-
-.side-bar a {
-  text-decoration: none;
-}
-
-.avatar{
-  width: 250px;
-  border: 1px solid #edeef0;
-}
-
-.main-info{
-  width: 760px;
-  margin-left: 20px;
-}
-.main-info div{
-  margin: 0 0 15px 0 ;
-}
-
-.my-posts input{
-  width: 1000px;
-  margin: 20px 0 20px 0;
-  height: 50px;
-}
-.my-posts{
-  margin: 20px;
-}
-
-.my-posts button{
-  width: 100px;
-  height: 30px;
-  cursor: pointer;
-}
-.my-posts div div{
-  display:flex;
-  justify-content: flex-end;
-  margin-bottom: 50px;
-}
-
-.post{
-  background-color: #edeef0;
-  margin: 10px 0 10px 0;
-  padding: 10px;
   border-radius: 5px;
 }
