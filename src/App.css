@@ -45,20 +45,6 @@ body{
   background-color: #edeef0;
 }
 
-/* .heade {
-  position: relative;
-  width: 100%;
-  height: 60px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  border-radius: 5px;}
-
-.heade img{
-  width: 100%;
-  position: absolute;
-  top: -350px;
-} */
-
 .main-div{
   margin: 0 auto;
   width: 1200px;
@@ -69,15 +55,4 @@ body{
 .bod{
   display: flex;
 
-}
-
-
-
-.my-page{
-  background-color: #fff;
-  width: 1040px;
-  padding: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  border-radius: 5px;
 }
