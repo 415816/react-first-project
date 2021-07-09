@@ -1,0 +1,8 @@
+.profile{
+    background-color: #fff;
+    width: 1040px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+  }

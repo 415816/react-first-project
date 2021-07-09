@@ -1,0 +1,27 @@
+.post{
+  background-color: #edeef0;
+  margin: 10px 0 10px 10px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 1000px;
+}
+.post img{
+  width: 60px;
+  border-radius: 30px;
+}
+
+.post div{
+  float: right;
+}
+
+span{
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 0 3px 0 3px;
+  margin: 4px;
+}
+
+span:hover{
+  cursor: pointer;
+  background-color: #fff;
+}

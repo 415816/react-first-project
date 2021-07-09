@@ -1,0 +1,25 @@
+.newPost input{
+  width: 990px;
+  margin: 20px 0 20px 0;
+  height: 50px;
+  border-radius: 5px;
+}
+.newPost{
+  background-color: #edeef0;
+  margin: 10px 0 10px 10px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 1000px;
+}
+
+.newPost button{
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.newPost div{
+  display:flex;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}

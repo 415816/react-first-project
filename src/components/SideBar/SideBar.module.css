@@ -1,0 +1,26 @@
+.sidebar{
+    width: 120px;
+    margin-right: 20px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  .sidebar div{
+    margin-bottom: 5px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  
+.sidebar div:hover{
+    cursor: pointer;
+    background-color: #edeef0;
+  }
+  
+.sidebar a {
+    text-decoration: none;
+    color: black;
+  }
+  
