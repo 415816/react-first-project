@@ -9,10 +9,9 @@
   .sidebar div{
     margin-bottom: 5px;
     margin: 5px;
-    padding: 5px;
+    /* padding: 5px; */
     border-radius: 5px;
   }
-
   
 .sidebar div:hover{
     cursor: pointer;
@@ -22,5 +21,14 @@
 .sidebar a {
     text-decoration: none;
     color: black;
+    padding: 5px;
+    width: 100px;
+    height: 26px;
+    display: block;
+  }
+
+  a.active{
+    background-color: #d6d6d6;
+    border-radius: 5px;
   }
   
