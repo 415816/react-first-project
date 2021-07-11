@@ -3,30 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-let arrPosts = [
-  { likes: 5, textPost: 'Hi, how are you?' },
-  { likes: 3, textPost: 'It is my first post!' },
-  { likes: 18, textPost: 'It is my zero post!' },
-];
-
-let collectPeople = [
-  { id: 1, name: 'Bulochka' },
-  { id: 2, name: 'Nastya' },
-  { id: 3, name: 'Tony' },
-  { id: 4, name: 'Mashka-Kakashka' }
-]
-
-let collectMessages = [
-  { id: 1, messag: "Hi!" },
-  { id: 2, messag: "How are you?" },
-  { id: 3, messag: "Are you sleep?" },
-  { id: 4, messag: "I am kakashka!" }
-]
+import state from './redux/state';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App arrPosts={arrPosts} collectPeople={collectPeople} collectMessages={collectMessages}/>
+    <App  arrPosts={state.arrPosts} 
+          collectPeople={state.collectPeople} 
+          collectMessages={state.collectMessages}
+          sidebar={state.sidebar}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

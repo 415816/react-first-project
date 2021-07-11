@@ -32,3 +32,10 @@
     border-radius: 5px;
   }
   
+
+  .fren{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }

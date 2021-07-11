@@ -15,7 +15,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className="main-div">
         <Header />
-        <SideBar />
+        <SideBar sidebar={props.sidebar}/>
         <div>
           <Route path='/Profile' render={ () => <Profile arrPosts={props.arrPosts}/>}/>
           <Route path='/Messages' render={ () => <Messages collectMessages={props.collectMessages} collectPeople={props.collectPeople}/>} />
