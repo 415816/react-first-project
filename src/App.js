@@ -10,15 +10,15 @@ import Settings from './components/Settings/Settings';
 import { BrowserRouter, Route, Router } from 'react-router-dom';
 
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="main-div">
         <Header />
         <SideBar />
         <div>
-          <Route path='/Profile' component={Profile} />
-          <Route path='/Messages' component={Messages} />
+          <Route path='/Profile' render={ () => <Profile arrPosts={props.arrPosts}/>}/>
+          <Route path='/Messages' render={ () => <Messages collectMessages={props.collectMessages} collectPeople={props.collectPeople}/>} />
           <Route path='/News' component={News} />
           <Route path='/Music' component={Music} />
           <Route path='/Settings' component={Settings} />

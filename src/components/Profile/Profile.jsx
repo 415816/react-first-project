@@ -3,11 +3,11 @@ import MainInfo from "./MainInfo/MainInfo";
 import MyPosts from "./MyPosts/MyPosts";
 import mP from "./Profile.module.css";
 
-const Profile = () => {
+const Profile = (props) => {
     return (<div className={mP.profile}>
         <Avatar />
         <MainInfo />
-        <MyPosts />
+        <MyPosts arrPosts={props.arrPosts}/>
     </div>)
 }
 
