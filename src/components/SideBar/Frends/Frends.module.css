@@ -1,0 +1,13 @@
+.fren img {
+  width: 20px;
+  margin: 0;
+  padding: 0;
+}
+ 
+.fren{
+  display: flex;
+  width: 25px;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
