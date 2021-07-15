@@ -7,7 +7,7 @@ const Profile = (props) => {
     return (<div className={mP.profile}>
         <Avatar />
         <MainInfo />
-        <MyPosts arrPosts={props.arrPosts}/>
+        <MyPosts arrPosts={props.arrPosts} addNewPost={props.addNewPost} newPost={props.newPost} changeNewPost={props.changeNewPost}/>
     </div>)
 }
 

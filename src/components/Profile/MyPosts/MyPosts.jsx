@@ -6,7 +6,7 @@ const MyPosts = (props) => {
   let posts = props.arrPosts.map(pos => <Post message={pos.textPost} likes={pos.likes} />);
 
 return (<div className={mp.my_posts}><h3>My posts</h3>
-    <NewPost />
+    <NewPost addNewPost={props.addNewPost} newPost={props.newPost} changeNewPost={props.changeNewPost}/>
     {posts}
   </div>)
 }

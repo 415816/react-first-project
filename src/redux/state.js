@@ -7,6 +7,8 @@ let state = {
         { likes: 18, textPost: 'It is my zero post!' }
     ],
 
+    newPost: '',
+
     collectPeople: [
         { id: 1, name: 'Bulochka' },
         { id: 2, name: 'Nastya' },
@@ -28,13 +30,28 @@ let state = {
     ],
 }
 
+window.state = state;
+
+export const changeNewPost = (postNewLetters) => {
+    state.newPost = postNewLetters;
+    rerenderAll(state);
+}
+
 export const addNewMessage = (textNewMessage) => {
     let newItem = {
         id: 5,
         messag: textNewMessage
     }
     state.collectMessages.push(newItem);
-    console.log(state.collectMessages);
+    rerenderAll(state);
+}
+
+export const addNewPost = (textNewPost) => {
+    let newPost = {
+        likes: 0,
+        textPost: textNewPost
+    }
+    state.arrPosts.push(newPost);
     rerenderAll(state);
 }
 
