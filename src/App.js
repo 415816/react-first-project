@@ -19,7 +19,7 @@ const App = (props) => {
         <div>
           <Route exact path='/' render={ () => <Profile arrPosts={props.arrPosts}/>}/>
           <Route path='/Profile' render={ () => <Profile arrPosts={props.arrPosts}/>}/>
-          <Route path='/Messages' render={ () => <Messages collectMessages={props.collectMessages} collectPeople={props.collectPeople}/>} />
+          <Route path='/Messages' render={ () => <Messages collectMessages={props.collectMessages} collectPeople={props.collectPeople} addNewMessage={props.addNewMessage}/>} />
           <Route path='/News' component={News} />
           <Route path='/Music' component={Music} />
           <Route path='/Settings' component={Settings} />

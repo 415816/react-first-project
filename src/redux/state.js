@@ -1,9 +1,11 @@
+import { rerenderAll } from './../render';
+
 let state = {
     arrPosts: [
         { likes: 5, textPost: 'Hi, how are you?' },
         { likes: 3, textPost: 'It is my first post!' },
         { likes: 18, textPost: 'It is my zero post!' }
-],
+    ],
 
     collectPeople: [
         { id: 1, name: 'Bulochka' },
@@ -18,12 +20,22 @@ let state = {
         { id: 3, messag: "Are you sleep?" },
         { id: 4, messag: "I am kakashka!" }
     ],
-    
+
     sidebar: [
         { id: 1, name: 'Oly' },
         { id: 2, name: 'Mas' },
         { id: 3, name: 'Vas' },
     ],
+}
+
+export const addNewMessage = (textNewMessage) => {
+    let newItem = {
+        id: 5,
+        messag: textNewMessage
+    }
+    state.collectMessages.push(newItem);
+    console.log(state.collectMessages);
+    rerenderAll(state);
 }
 
 export default state;
