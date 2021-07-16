@@ -1,4 +1,7 @@
-import { rerenderAll } from './../render';
+
+let rerenderAll = () => {
+    console.log('It is a template of function');
+  }
 
 let state = {
     arrPosts: [
@@ -54,5 +57,9 @@ export const addNewPost = (textNewPost) => {
     state.arrPosts.push(newPost);
     rerenderAll(state);
 }
+
+export const callbackrerender = (observer) => {
+    rerenderAll = observer;
+  }
 
 export default state;
