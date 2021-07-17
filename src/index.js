@@ -1,34 +1,27 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import state from './redux/state'
+import store from './redux/state'
 import reactDom from 'react-dom';
 import React from 'react';
 import App from './App';
-import {addNewMessage} from './redux/state'
-import {addNewPost} from './redux/state'
-import {changeNewPost} from './redux/state'
-import {callbackrerender} from './redux/state'
- 
 
 
-export const rerenderAll = (state) => {
+export const rerenderAll = () => {
   reactDom.render(
     <React.StrictMode>
-      <App arrPosts={state.arrPosts}
-        collectPeople={state.collectPeople}
-        collectMessages={state.collectMessages}
-        sidebar={state.sidebar}
-        addNewMessage={addNewMessage}
-        addNewPost={addNewPost} 
-        changeNewPost={changeNewPost} 
-        newPost={state.newPost} />
+      <App arrPosts={store.getState().arrPosts}
+        collectPeople={store.getState().collectPeople}
+        collectMessages={store.getState().collectMessages}
+        sidebar={store.getState().sidebar}
+        dispatch={store.dispatch.bind(store)}
+        newPost={store.getState().newPost} />
     </React.StrictMode>,
     document.getElementById('root')
   );
-}
+};
 
-callbackrerender(rerenderAll);
+store.callbackrerender(rerenderAll);
 
-rerenderAll(state);
+rerenderAll(store.getState());
 
 reportWebVitals();

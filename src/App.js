@@ -17,9 +17,9 @@ const App = (props) => {
         <Header />
         <SideBar sidebar={props.sidebar}/>
         <div>
-          <Route exact path='/' render={ () => <Profile arrPosts={props.arrPosts} addNewPost = {props.addNewPost} changeNewPost={props.changeNewPost}/>}/>
-          <Route path='/Profile' render={ () => <Profile arrPosts={props.arrPosts} addNewPost = {props.addNewPost} changeNewPost={props.changeNewPost}/>}/>
-          <Route path='/Messages' render={ () => <Messages collectMessages={props.collectMessages} collectPeople={props.collectPeople} addNewMessage={props.addNewMessage}/>} />
+          <Route exact path='/' render={ () => <Profile arrPosts={props.arrPosts} dispatch = {props.dispatch} />}/>
+          <Route path='/Profile' render={ () => <Profile arrPosts={props.arrPosts} dispatch = {props.dispatch} />}/>
+          <Route path='/Messages' render={ () => <Messages collectMessages={props.collectMessages} collectPeople={props.collectPeople} dispatch={props.dispatch}/>} />
           <Route path='/News' component={News} />
           <Route path='/Music' component={Music} />
           <Route path='/Settings' component={Settings} />

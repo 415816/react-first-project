@@ -6,13 +6,13 @@ import mes from "./Messages.module.css";
 
 const Messages = (props) => {
     let dialog = props.collectPeople.map(d => <DialogItem name={d.name} id={d.id}/>);
-    let messa = props.collectMessages.map(m => <Message textMessage={m.messag} addNewMessage={props.addNewMessage}/>);
+    let messa = props.collectMessages.map(m => <Message textMessage={m.messag} /* addNewMessage={props.addNewMessage} *//>);
     
     let messageText = React.createRef();
 
     let addNewMessage = () => {
         let text = messageText.current.value;
-        props.addNewMessage(text);
+        props.dispatch({type: 'ADD-NEW-MESSAGE', textNewMessage: text});
         messageText.current.value = '';
     }
 

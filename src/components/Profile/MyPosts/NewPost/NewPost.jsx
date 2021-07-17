@@ -5,12 +5,12 @@ const NewPost = (props) => {
    const newPostText = React.createRef();
 
    const addNewPos = () =>{
-      props.addNewPost(newPostText.current.value); 
+      props.dispatch({type: 'ADD-NEW-POST', textNewPost: newPostText.current.value}); 
       newPostText.current.value = '';
    }
 
    const changeNewPos = () => {
-      props.changeNewPost(newPostText.current.value);
+      props.dispatch({type: 'CHANGE-NEW-POST', postNewLetters: newPostText.current.value});
    }
 
 return(<div className={nP.newPost}>
