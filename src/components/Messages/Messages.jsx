@@ -16,6 +16,10 @@ const Messages = (props) => {
         messageText.current.value = '';
     }
 
+    const changeNewMessa = () => {
+
+    }
+
     return (
         <div className={mes.messagesContainer}>
             <div className="dialogs">
@@ -24,7 +28,7 @@ const Messages = (props) => {
             <div className="messages">
                 {messa}
                 <div>
-                    <input ref={messageText} type="text"/>
+                    <input ref={messageText} onChange={changeNewMessa} type="text" placeholder=""/>
                     <button onClick={addNewMessage}>Send</button>
                 </div>
             </div>

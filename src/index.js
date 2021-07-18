@@ -20,7 +20,7 @@ export const rerenderAll = () => {
   );
 };
 
-store.callbackrerender(rerenderAll);
+store.rerenderAll(rerenderAll);
 
 rerenderAll(store.getState());
 

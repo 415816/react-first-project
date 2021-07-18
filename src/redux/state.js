@@ -29,61 +29,45 @@ let store = {
         ],
     },
 
-    getState(){
+    getState() {
         return this._state;
     },
 
-    dispatch(action){
-        if (action.type === 'CHANGE-NEW-POST'){
+    dispatch(action) {
+        if (action.type === 'CHANGE-NEW-POST') {
             this._state.newPost = action.postNewLetters;
-            store.rerenderAll(this);
-        } else if (action.type === 'ADD-NEW-MESSAGE'){
-            let newItem = {
-                id: 5,
-                messag: action.textNewMessage
-            }
-            this._state.collectMessages.push(newItem);
-            store.rerenderAll(this);
-        } else if (action.type === 'ADD-NEW-POST'){
+            store._rerenderAll(this._state);
+        } else if (action.type === 'ADD-NEW-POST') {
             let newPost = {
                 likes: 0,
                 textPost: action.textNewPost
             }
             this._state.arrPosts.push(newPost);
-            store.rerenderAll(this);
-        }
-    }
-    /* changeNewPost(postNewLetters) {
-        this._state.newPost = postNewLetters;
-        store.rerenderAll(this);
-    },
+            store._rerenderAll(this._state1);
+        } else if (action.type === 'CHANGE-NEW-POST') {
+            this._state.newPost = action.postNewLetters;
+            store._rerenderAll(this._state);
+        } else if (action.type === 'ADD-NEW-MESSAGE') {
+            let newItem = {
+                id: 5,
+                messag: action.textNewMessage
+            }
+            this._state.collectMessages.push(newItem);
+            store._rerenderAll(this._state);
+        },
 
-    addNewMessage(textNewMessage) {
-        let newItem = {
-            id: 5,
-            messag: textNewMessage
+        _rerenderAll() {
+            console.log('It is a template of function');
+        },
+        rerenderAll(observer) {
+            store._rerenderAll = observer;
         }
-        this._state.collectMessages.push(newItem);
-        store.rerenderAll(this);
-    },
-
-    addNewPost(textNewPost) {
-        let newPost = {
-            likes: 0,
-            textPost: textNewPost
-        }
-        this._state.arrPosts.push(newPost);
-        store.rerenderAll(this);
-    } */,
-    
-    _rerenderAll() {
-        console.log('It is a template of function');
-    },    
-    callbackrerender(observer) {
-        store.rerenderAll = observer;
-    }
-}
+    };
 
 window.store = store;
 
-export default store;
+    export default store;
+
+
+// добавить CHANGE-NEW-MESSAGE
+// формирователь action в state
