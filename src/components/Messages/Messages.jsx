@@ -13,11 +13,11 @@ const Messages = (props) => {
     let addNewMessage = () => {
         let text = messageText.current.value;
         props.dispatch({type: 'ADD-NEW-MESSAGE', textNewMessage: text});
-        messageText.current.value = '';
+        // messageText.current.value = '';
     }
 
     const changeNewMessa = () => {
-
+        props.dispatch({type: 'CHANGE-NEW-MESSAGE', messageNewLetters: messageText.current.value})
     }
 
     return (
@@ -28,7 +28,7 @@ const Messages = (props) => {
             <div className="messages">
                 {messa}
                 <div>
-                    <input ref={messageText} onChange={changeNewMessa} type="text" placeholder=""/>
+                    <input ref={messageText} onChange={changeNewMessa} value={props.newMessage} type="text" placeholder="Please enter your message"/>
                     <button onClick={addNewMessage}>Send</button>
                 </div>
             </div>

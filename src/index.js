@@ -14,7 +14,8 @@ export const rerenderAll = () => {
         collectMessages={store.getState().collectMessages}
         sidebar={store.getState().sidebar}
         dispatch={store.dispatch.bind(store)}
-        newPost={store.getState().newPost} />
+        newPost={store.getState().newPost}
+        newMessage={store.getState().newMessage} />
     </React.StrictMode>,
     document.getElementById('root')
   );
