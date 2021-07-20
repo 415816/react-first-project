@@ -1,4 +1,4 @@
-import profileReduser from "./profileReduser";
+import profileReducer from "./profileReducer";
 import messagesReduser from "./messagesReduser";
 
 let store = {
@@ -39,7 +39,7 @@ let store = {
     },
 
     dispatch(action) {
-        this._state = profileReduser(this._state, action);
+        this._state = profileReducer(this._state, action);
         store._rerenderAll(this._state);
         this._state = messagesReduser(this._state, action);
         store._rerenderAll(this._state);
