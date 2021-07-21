@@ -15,12 +15,18 @@ export const rerenderAll = () => {
         sidebar={store.getState().sideBar}
         dispatch={store.dispatch.bind(store)}
         newPost={store.getState().profilePage.newPost}
-        newMessage={store.getState().messagePage.newMessage} />
+        newMessage={store.getState().messagePage.newMessage}
+        store={store}
+      />
     </React.StrictMode>,
     document.getElementById('root')
   );
 };
 
+store.subscribe(rerenderAll);
+rerenderAll(store.getState());
+
+reportWebVitals();
 
 // export const rerenderAll = () => {
 //   reactDom.render(
@@ -37,7 +43,3 @@ export const rerenderAll = () => {
 //   );
 // };
 
-store.subscribe(rerenderAll);
-rerenderAll(store.getState());
-
-reportWebVitals();

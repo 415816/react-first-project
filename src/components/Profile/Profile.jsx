@@ -7,7 +7,7 @@ const Profile = (props) => {
     return (<div className={mP.profile}>
         <Avatar />
         <MainInfo />
-        <MyPosts arrPosts={props.arrPosts} dispatch={props.dispatch} newPost={props.newPost}/>
+        <MyPosts store={props.store} arrPosts={props.arrPosts} dispatch={props.dispatch} newPost={props.newPost}/>
     </div>)
 }
 
