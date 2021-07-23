@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import sb from './SideBar.module.css';
-import Frends from './Frends/Frends'
+import FrendsWrapper from "./Frends/FrendsWrapper";
 
 const SideBar = (props) => {
     return (<div className={sb.sidebar}>
@@ -11,7 +11,7 @@ const SideBar = (props) => {
         <div><NavLink to="/Settings" activeClassName={sb.active}>Settings</NavLink></div>
 
         <div className={sb.fren}>
-            <Frends />
+            <FrendsWrapper />
         </div>
     </div>)
 };
