@@ -1,25 +1,27 @@
 import React from "react";
 import Messages from "./Messages";
+import {connect} from "react-redux";
 
-const MessagesWrapper = (props) => {
 
-    let addNewMessage = (typ, text) => {
-        props.store.dispatch({type: typ, textNewMessage: text});
+let mapStateToProps = (state) => {
+    return {
+        newMessage: state.messagePage.newMessage,
+        collectPeople: state.messagePage.collectPeople,
+        collectMessages: state.messagePage.collectMessages
     }
-
-    const changeNewMessa = (typ, newLetters) => {
-        props.store.dispatch({type: typ, messageNewLetters: newLetters})
-    }
-
-    return (
-        <Messages
-            addNewMessa={addNewMessage}
-            changeNewMessa={changeNewMessa}
-            newMessage={props.store.getState().messagePage.newMessage}
-            collectPeople={props.store.getState().messagePage.collectPeople}
-            collectMessages={props.store.getState().messagePage.collectMessages}
-        />
-    )
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addNewMessa: (typ, text) => {
+            dispatch({type: typ, textNewMessage: text});
+        },
+        changeNewMessa: (typ, newLetters) => {
+            dispatch({type: typ, messageNewLetters: newLetters})
+        }
+    }
+}
+
+const MessagesWrapper = connect(mapStateToProps, mapDispatchToProps)(Messages);
 
 export default MessagesWrapper;

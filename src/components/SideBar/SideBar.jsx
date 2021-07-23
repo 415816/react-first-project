@@ -11,7 +11,7 @@ const SideBar = (props) => {
         <div><NavLink to="/Settings" activeClassName={sb.active}>Settings</NavLink></div>
 
         <div className={sb.fren}>
-            <Frends sidebar={props.sidebar}/>
+            <Frends />
         </div>
     </div>)
 };
