@@ -1,25 +1,20 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import reactDom from 'react-dom';
-import React from 'react';
+import ReactDOM from 'react-dom'
 import App from './App';
 import store from "./redux/reduxStore";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 
-export const rerenderAll = () => {
-    reactDom.render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <App/>
-            </Provider>
-        </BrowserRouter>,
-        document.getElementById('root')
-    );
-};
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </BrowserRouter>,
+    document.getElementById('root')
+);
 
-store.subscribe(rerenderAll);
-rerenderAll(store.getState());
 
 reportWebVitals();
 
