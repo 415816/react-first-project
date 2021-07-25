@@ -5,8 +5,8 @@ import Message from "./Message/Message";
 import mes from "./Messages.module.css";
 
 const Messages = (props) => {
-    let dialog = props.collectPeople.map(d => <DialogItem name={d.name} id={d.id}/>);
-    let messa = props.collectMessages.map(m => <Message textMessage={m.messag} />);
+    let dialog = props.collectPeople.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
+    let messa = props.collectMessages.map(m => <Message textMessage={m.messag} key={m.id} />);
     
     let messageText = React.createRef();
 

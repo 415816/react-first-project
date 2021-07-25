@@ -19,20 +19,21 @@ let initialState = {
 const messageReduser = (state = initialState, action) => {
     switch (action.type) {
         case 'CHANGE-NEW-MESSAGE': {
-            let stateCopy = {...state};
-            stateCopy.newMessage = action.messageNewLetters;
-            return stateCopy;
+            return {
+                ...state,
+                newMessage: action.messageNewLetters
+            }
         }
         case 'ADD-NEW-MESSAGE': {
             let newItem = {
                 id: 5,
                 messag: action.textNewMessage
             };
-            let stateCopy = {...state};
-            stateCopy.collectMessages = [...stateCopy.collectMessages]
-            stateCopy.collectMessages.push(newItem);
-            stateCopy.newMessage = '';
-            return stateCopy;
+            return {
+                ...state,
+                collectMessages: [...state.collectMessages, newItem],
+                newMessage: '',
+            }
         }
         default:
             return state;
