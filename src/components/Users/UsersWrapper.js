@@ -3,16 +3,17 @@ import Users from "./Users";
 
 let mapStateToProps = (state) => {
     return{
-        state: state.usersPage.users
+        users: state.usersPage.users
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return{
+        follow: dispatch()
 
     }
 }
 
-const UsersWrapper = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersWrapper = connect(mapStateToProps)(Users);
 
 export default UsersWrapper;
