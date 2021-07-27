@@ -1,0 +1,65 @@
+.container{
+    display: flex;
+    margin: 0 0 10px 0;
+    flex-wrap: wrap;
+    width: 1047px;
+    justify-content: space-between;
+}
+
+.usersContainer{
+    display: flex;
+    margin: 0 0 50px 0;
+    flex-wrap: wrap;
+    width: 500px;
+}
+
+.usersAvaBut{
+    display: flex;
+    flex-direction: column;
+}
+
+.usersAvaBut img {
+    border-radius: 5px;
+
+}
+
+.usersAvaBut button{
+    border-radius: 5px;
+    margin: 3px 0 0 0;
+    cursor: pointer;
+    height: 30px;
+}
+
+.usersData{
+    display: flex;
+    flex-wrap: wrap;
+    width: 345px;
+    /*border: 1px solid red;*/
+    align-content: space-between;
+}
+
+.name{
+    font-size: 26px;
+    width: 150px;
+    padding: 0 0 0 20px;
+}
+.place{
+    width: 160px;
+    text-align: end;
+}
+.discription{
+    width: 330px;
+    height: 70px;
+    border-radius: 10px;
+    margin: 0 0 0 10px;
+    padding: 0 0 0 15px;
+    background: #ffffff;
+}
+.usersData button{
+    border-radius: 5px;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+    height: 30px;
+    width: 330px;
+    position: relative;
+}

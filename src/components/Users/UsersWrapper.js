@@ -9,11 +9,15 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return{
-        follow: dispatch()
-
+        follow: (id) => {
+            dispatch({type: 'follow', id: id});
+        },
+        unfollow: (id) => {
+            dispatch({type: 'unfollow', id: id});
+        }
     }
 }
 
-const UsersWrapper = connect(mapStateToProps)(Users);
+const UsersWrapper = connect(mapStateToProps, mapDispatchToProps)(Users);
 
 export default UsersWrapper;
