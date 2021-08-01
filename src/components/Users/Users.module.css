@@ -20,7 +20,6 @@
 
 .usersAvaBut img {
     border-radius: 5px;
-
 }
 
 .usersAvaBut button{
@@ -34,7 +33,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 345px;
-    /*border: 1px solid red;*/
     align-content: space-between;
 }
 
@@ -62,4 +60,9 @@
     height: 30px;
     width: 330px;
     position: relative;
+}
+
+.selectedPage{
+    font-weight: bold;
+    margin: 0 7px 0 7px;
 }

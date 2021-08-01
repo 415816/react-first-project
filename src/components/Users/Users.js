@@ -1,24 +1,35 @@
 import us from './Users.module.css'
 import {NavLink} from "react-router-dom";
 import * as axios from 'axios';
-import ava from '../../img/defaultAvatar.jpg'
+import ava from '../../img/defaultAvatar.gif'
 import React from "react";
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
-            if (this.props.users.length === 0) {
-                axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-                    this.props.setUsers(response.data.items);
-                })
-            }
+    componentDidMount() {
+        if (this.props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                this.props.setUsers(response.data.items);
+            })
+        }
     }
 
+
     render() {
+        let pages = [];
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.usersOnPage);
+        for (let i=1; i <= pagesCount; i++){
+            pages.push(i);
+        }
+
         return (
             <div className={us.container}>
-                {
-                    this.props.users.map(u =>
+                    <div>
+                        {pages.map(p => {
+                            return <span className={if (p === this.props.currentPage)}>{p}</span>
+                        })}
+
+                    </div>
+                {this.props.users.map(u =>
                         <div className={us.usersContainer}>
                             <div className={us.usersAvaBut}>
                                 <img src={u.photos.small != null ? u.imgSrc : ava}/>
