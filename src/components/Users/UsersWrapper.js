@@ -21,6 +21,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         setUsers: (users) => {
             dispatch({type: 'setUsers', users: users})
+        },
+        setCurrentPage: (pageNumber) => {
+            dispatch({type: 'setCurrentPage', currentPage: pageNumber})
+        },
+        setTotalCount: (totalCount) => {
+            dispatch({type: 'setTotalCount', currentPage: totalCount})
         }
     }
 }

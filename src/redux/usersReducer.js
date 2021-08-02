@@ -1,9 +1,9 @@
 let stateInit = {
     users: [],
     pageCount: 0,
-    usersOnPage: 5,
-    totalUsersCount: 10,
-    currentPage: 1,
+    usersOnPage: 10,
+    totalUsersCount: 0,
+    currentPage: 2,
 };
 
 const usersReducer = (state = stateInit, action) => {
@@ -32,7 +32,17 @@ const usersReducer = (state = stateInit, action) => {
         }
         case 'setUsers': {
             return {
-                ...state, users: [...state.users, ...action.users]
+                ...state, users: action.users
+            }
+        }
+        case 'setCurrentPage': {
+            return {
+                ...state, currentPage: action.currentPage
+            }
+        }
+        case 'setTotalCount': {
+            return {
+                ...state, totalUsersCount: action.currentPage
             }
         }
         default:
