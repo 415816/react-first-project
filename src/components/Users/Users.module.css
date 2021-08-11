@@ -6,6 +6,15 @@
     justify-content: space-between;
 }
 
+.numerationPages {
+    display: flex;
+    flex-wrap: wrap;
+}
+.numerationPages span{
+    width: 35px;
+    padding: 0;
+}
+
 .usersContainer{
     display: flex;
     margin: 0 0 50px 0;
@@ -64,5 +73,4 @@
 
 .selectedPage{
     font-weight: bold;
-    margin: 0 7px 0 7px;
 }

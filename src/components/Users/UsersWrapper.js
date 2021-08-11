@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import Users from "./Users";
+import UsersContainer from "./UsersContainer";
 
 let mapStateToProps = (state) => {
     return{
@@ -31,6 +31,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const UsersWrapper = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersWrapper = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
 
 export default UsersWrapper;
