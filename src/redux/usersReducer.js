@@ -4,6 +4,7 @@ let stateInit = {
     usersOnPage: 10,
     totalUsersCount: 0,
     currentPage: 2,
+    isFetching: true
 };
 
 const usersReducer = (state = stateInit, action) => {
@@ -43,6 +44,12 @@ const usersReducer = (state = stateInit, action) => {
         case 'setTotalCount': {
             return {
                 ...state, totalUsersCount: action.currentPage
+            }
+        }
+
+        case 'toggleIsFetching': {
+            return {
+                ...state, isFetching: action.isFetching
             }
         }
         default:

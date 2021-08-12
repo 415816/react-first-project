@@ -8,6 +8,7 @@ let mapStateToProps = (state) => {
         usersOnPage: state.usersPage.usersOnPage,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching
     }
 }
 
@@ -27,6 +28,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setTotalCount: (totalCount) => {
             dispatch({type: 'setTotalCount', currentPage: totalCount})
+        },
+        toggleIsFetching: (isTrue) => {
+            dispatch({type: 'toggleIsFetching', isFetching: isTrue})
         }
     }
 }
