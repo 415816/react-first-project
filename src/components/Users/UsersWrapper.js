@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import UsersContainer from "./UsersContainer";
+import {follow, setCurrentPage, setTotalCount, setUsers, toggleIsFetching, unfollow} from "../../redux/usersReducer";
 
 let mapStateToProps = (state) => {
     return{
@@ -12,29 +13,28 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return{
-        follow: (id) => {
-            dispatch({type: 'follow', id: id});
-        },
-        unfollow: (id) => {
-            dispatch({type: 'unfollow', id: id});
-        },
-        setUsers: (users) => {
-            dispatch({type: 'setUsers', users: users})
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch({type: 'setCurrentPage', currentPage: pageNumber})
-        },
-        setTotalCount: (totalCount) => {
-            dispatch({type: 'setTotalCount', currentPage: totalCount})
-        },
-        toggleIsFetching: (isTrue) => {
-            dispatch({type: 'toggleIsFetching', isFetching: isTrue})
-        }
-    }
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return{
+//         follow: (id) => dispatch (follow(id)),
+//
+//         unfollow: (id) => dispatch (unfollow(id)),
+//
+//         setUsers: (users) => dispatch (setUsers(users)),
+//
+//         setCurrentPage: (pageNumber) => dispatch(setCurrentPage (pageNumber)),
+//
+//         setTotalCount: (totalCount) => dispatch(setTotalCount(totalCount)),
+//
+//         toggleIsFetching: (isTrue) => dispatch(toggleIsFetching(isTrue))
+//         }
+//     }
 
-const UsersWrapper = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+const UsersWrapper = connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalCount,
+    toggleIsFetching})(UsersContainer);
 
 export default UsersWrapper;

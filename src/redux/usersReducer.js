@@ -57,5 +57,15 @@ const usersReducer = (state = stateInit, action) => {
     }
 }
 
+export const follow = (id) => ({type: 'follow', id: id});
+export const unfollow = (id) => ({type: 'unfollow', id: id});
+export const setUsers = (users) => ({type: 'setUsers', users: users});
+export const setCurrentPage = (pageNumber) => ({type: 'setCurrentPage', currentPage: pageNumber});
+export const setTotalCount = (totalCount) => ({type: 'setTotalCount', currentPage: totalCount});
+export const toggleIsFetching = (isTrue) => ({type: 'toggleIsFetching', isFetching: isTrue});
+
+
+
+
 
 export default usersReducer;
