@@ -6,8 +6,8 @@ import MyPostsWrapper from "./MyPosts/MyPostsWrapper";
 
 const Profile = (props) => {
     return (<div className={mP.profile}>
-        <Avatar />
-        <MainInfo />
+        <Avatar profile={props.profile}/>
+        <MainInfo profile={props.profile}/>
         <MyPostsWrapper />
     </div>)
 }

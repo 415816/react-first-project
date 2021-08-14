@@ -30,11 +30,11 @@ let mapStateToProps = (state) => {
 //     }
 
 const UsersWrapper = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
-    setCurrentPage,
-    setTotalCount,
-    toggleIsFetching})(UsersContainer);
+                                                follow,
+                                                unfollow,
+                                                setUsers,
+                                                setCurrentPage,
+                                                setTotalCount,
+                                                toggleIsFetching})(UsersContainer);
 
 export default UsersWrapper;

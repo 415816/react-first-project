@@ -5,6 +5,7 @@ let initialState = {
         {id: 2, likes: 18, textPost: 'It is my zero post!'}
     ],
     newPost: '',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -26,9 +27,13 @@ const profileReducer = (state = initialState, action) => {
                 newPost: ''
             }
         }
+        case 'SET-PROFILE': {
+            return {...state, profile: action.profile}            }
+
             default:
                 return state;
             }
         }
-        export default
-            profileReducer;
+        export default profileReducer;
+
+export const setProfile = (profile) => ({type: 'SET-PROFILE', profile: profile})

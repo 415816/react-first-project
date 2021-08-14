@@ -3,12 +3,12 @@ import './App.css';
 import Header from './components/Header/Header';
 import Music from './components/Music/Music';
 import News from './components/News/News';
-import Profile from './components/Profile/Profile';
 import SideBar from './components/SideBar/SideBar';
 import Settings from './components/Settings/Settings';
 import {BrowserRouter, Route, Router} from 'react-router-dom';
 import MessagesWrapper from "./components/Messages/MessagesWrapper";
 import UsersWrapper from "./components/Users/UsersWrapper";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 const App = (props) => {
@@ -18,8 +18,8 @@ const App = (props) => {
                 <Header/>
                 <SideBar sidebar={props.sidebar}/>
                 <div>
-                    <Route exact path='/' render={() => <Profile />}/>
-                    <Route path='/Profile' render={() => <Profile />}/>
+                    <Route exact path='/' render={() => <ProfileContainer />}/>
+                    <Route path='/Profile' render={() => <ProfileContainer />}/>
                     <Route path='/Messages' render={() => <MessagesWrapper />}/>
                     <Route path='/News' component={News}/>
                     <Route path='/Music' component={Music}/>

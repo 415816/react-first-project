@@ -1,8 +1,10 @@
 import av from './Avatar.module.css';
+import Preloader from "../../Preloader/Preloader";
 
-const Avatar = () => {
+const Avatar = (props) => {
+    if (props.profile == null) {return <Preloader/>}
     return (<div>
-        <img className={av.avatar} src="https://static.bogacho.ru/common/attachments/origin/image/5d/75/03/5bd9df_10.jpg?v=6c7ca4"></img>
+        <img className={av.avatar} src={props.profile.photos.large}></img>
     </div>)
 }
 export default Avatar;
