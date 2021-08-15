@@ -17,7 +17,7 @@ const Users = (props) => {
                 {props.users.map(u =>
                     <div className={us.usersContainer}>
                         <div className={us.usersAvaBut}>
-                            <NavLink to={'/profile/' + u.id}><img src={u.photos.small != null ? u.imgSrc : ava}/></NavLink>
+                            <NavLink to={'/profile/' + u.id}><img src={u.photos.small != null ? u.photos.small : ava}/></NavLink>
                             {u.following ?
                                 <button onClick={() => {
                                     props.unfollow(u.id)
