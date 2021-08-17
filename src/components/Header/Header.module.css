@@ -11,3 +11,15 @@
     position: absolute;
     top: -350px;
   }
+
+.authLogin {
+    z-index: 999999;
+    width: 100px;
+    position: relative;
+    left: 1100px;
+    padding: 3px;
+    text-align: center;
+    background: #61dafb;
+    border-radius: 5px;
+    text-decoration: none;
+}
