@@ -2,7 +2,6 @@ import he from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-    debugger
     return (
         <div className={he.heade}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Social_networking_services.jpg"></img>

@@ -18,11 +18,11 @@ const App = (props) => {
                 <SideBar sidebar={props.sidebar}/>
                 <div>
                     <Route exact path='/' render={() => <ProfileContainer />}/>
-                    <Route path='/Profile /:userID' render={() => <ProfileContainer />}/>
-                    <Route path='/Messages' render={() => <MessagesWrapper />}/>
-                    <Route path='/News' component={News}/>
-                    <Route path='/Music' component={Music}/>
-                    <Route path='/Users' render={() => <UsersWrapper />}/>
+                    <Route path='/profile/:userID?' render={() => <ProfileContainer />}/>
+                    <Route path='/messages' render={() => <MessagesWrapper />}/>
+                    <Route path='/news' component={News}/>
+                    <Route path='/music' component={Music}/>
+                    <Route path='/users' render={() => <UsersWrapper />}/>
 
                     <Route path='/Settings' component={Settings}/>
                 </div>
