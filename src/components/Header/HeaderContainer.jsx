@@ -9,11 +9,9 @@ class HeaderContainer extends React.Component {
         axios.get('https://social-network.samuraijs.com/api/1.0/auth/me', {withCredentials: true}).then(response => {
             if (response.data.resultCode === 0) {
                 this.props.setAuthUser(response.data.data.id, response.data.data.login, response.data.data.email)
-
-                /*axios.get('https://social-network.samuraijs.com/api/1.0/' + response.data.data.id).then(response => {
-                    response.data.
-               */ }})
             }
+        })
+    }
 
     render() {
         return <Header {...this.props}/>

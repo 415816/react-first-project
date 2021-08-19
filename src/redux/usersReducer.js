@@ -43,7 +43,7 @@ const usersReducer = (state = stateInit, action) => {
         }
         case 'setTotalCount': {
             return {
-                ...state, totalUsersCount: action.currentPage
+                ...state, totalUsersCount: action.totalCount
             }
         }
 
@@ -61,7 +61,7 @@ export const follow = (id) => ({type: 'follow', id: id});
 export const unfollow = (id) => ({type: 'unfollow', id: id});
 export const setUsers = (users) => ({type: 'setUsers', users: users});
 export const setCurrentPage = (pageNumber) => ({type: 'setCurrentPage', currentPage: pageNumber});
-export const setTotalCount = (totalCount) => ({type: 'setTotalCount', currentPage: totalCount});
+export const setTotalCount = (totalCount) => ({type: 'setTotalCount', totalCount: totalCount});
 export const toggleIsFetching = (isTrue) => ({type: 'toggleIsFetching', isFetching: isTrue});
 
 
