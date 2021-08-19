@@ -4,7 +4,7 @@ import FrendsWrapper from "./Frends/FrendsWrapper";
 
 const SideBar = (props) => {
     return (<div className={sb.sidebar}>
-        <div><NavLink to="/profile" activeClassName={sb.active}>Profile</NavLink></div>
+        <div><NavLink to="/profile/" activeClassName={sb.active}>Profile</NavLink></div>
         <div><NavLink to="/messages" activeClassName={sb.active}>Messages</NavLink></div>
         <div><NavLink to="/users" activeClassName={sb.active}>Users</NavLink></div>
         <div><NavLink to="/news" activeClassName={sb.active}>News</NavLink></div>
