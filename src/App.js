@@ -23,7 +23,6 @@ const App = (props) => {
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/users' render={() => <UsersWrapper />}/>
-
                     <Route path='/Settings' component={Settings}/>
                 </div>
             </div>
