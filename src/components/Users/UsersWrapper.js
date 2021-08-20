@@ -1,6 +1,14 @@
 import {connect} from "react-redux";
 import UsersContainer from "./UsersContainer";
-import {follow, setCurrentPage, setTotalCount, setUsers, toggleIsFetching, unfollow} from "../../redux/usersReducer";
+import {
+    follow,
+    setCurrentPage,
+    setTotalCount,
+    setUsers,
+    toggleIsFetching,
+    toggleIsFollowingInProgress,
+    unfollow
+} from "../../redux/usersReducer";
 
 let mapStateToProps = (state) => {
     return{
@@ -9,7 +17,8 @@ let mapStateToProps = (state) => {
         usersOnPage: state.usersPage.usersOnPage,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
@@ -19,6 +28,7 @@ const UsersWrapper = connect(mapStateToProps, {
                                                 setUsers,
                                                 setCurrentPage,
                                                 setTotalCount,
-                                                toggleIsFetching})(UsersContainer);
+                                                toggleIsFetching,
+                                                toggleIsFollowingInProgress})(UsersContainer);
 
 export default UsersWrapper;
