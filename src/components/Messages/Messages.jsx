@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import mes from "./Messages.module.css";
@@ -18,6 +18,7 @@ const Messages = (props) => {
         props.changeNewMessa('CHANGE-NEW-MESSAGE', messageText.current.value);
     }
 
+    if (props.myLogin === null) return <Redirect to='/login/' />
     return (
         <div className={mes.messagesContainer}>
             <div className="dialogs">

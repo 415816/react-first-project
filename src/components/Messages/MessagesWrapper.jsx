@@ -7,7 +7,8 @@ let mapStateToProps = (state) => {
     return {
         newMessage: state.messagePage.newMessage,
         collectPeople: state.messagePage.collectPeople,
-        collectMessages: state.messagePage.collectMessages
+        collectMessages: state.messagePage.collectMessages,
+        myLogin: state.authReducer.login,
     }
 }
 

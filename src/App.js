@@ -8,6 +8,7 @@ import MessagesWrapper from "./components/Messages/MessagesWrapper";
 import UsersWrapper from "./components/Users/UsersWrapper";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 
 const App = (props) => {
@@ -24,6 +25,7 @@ const App = (props) => {
                     <Route path='/music' component={Music}/>
                     <Route path='/users' render={() => <UsersWrapper />}/>
                     <Route path='/Settings' component={Settings}/>
+                    <Route path='/login' component={Login}/>
                 </div>
             </div>
         </BrowserRouter>
