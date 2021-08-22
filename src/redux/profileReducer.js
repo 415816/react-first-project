@@ -1,3 +1,6 @@
+import {profileAPI} from "../api/API";
+
+
 let initialState = {
     arrPosts: [
         {id: 0, likes: 5, textPost: 'Hi, how are you?'},
@@ -28,12 +31,22 @@ const profileReducer = (state = initialState, action) => {
             }
         }
         case 'SET-PROFILE': {
-            return {...state, profile: action.profile}            }
-
-            default:
-                return state;
-            }
+            return {...state, profile: action.profile}
         }
-        export default profileReducer;
 
-export const setProfile = (profile) => ({type: 'SET-PROFILE', profile: profile})
+        default:
+            return state;
+    }
+}
+
+export const setProfile = (profile) => ({type: 'SET-PROFILE', profile: profile});
+
+export default profileReducer;
+
+export const chooseProfileThunk = (id) => {
+    return (dispatch) => {
+        profileAPI.chooseProfile(id).then(response => {
+            dispatch(setProfile(response.data));
+        })
+    }
+}

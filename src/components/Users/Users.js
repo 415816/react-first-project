@@ -2,7 +2,6 @@ import us from './Users.module.css'
 import {NavLink} from "react-router-dom";
 import ava from '../../img/defaultAvatar.gif'
 import React from "react";
-import {usersAPI} from "../../api/API";
 
 const Users = (props) => {
 
@@ -21,24 +20,10 @@ const Users = (props) => {
                             src={u.photos.small != null ? u.photos.small : ava}/></NavLink>
                         {u.followed
                             ? <button disabled={props.followingInProgress.some(id => id == u.id)} onClick={() => {
-                                props.toggleIsFollowingInProgress(true, u.id);
-                                usersAPI.unfollowUser(u.id).then(response => {
-                                    if (response.data.resultCode == 0) {
-                                        props.unfollow(u.id)
-                                    }
-                                    props.toggleIsFollowingInProgress(false, u.id)
-                                })
-                            }
+                                props.unFollowThunk(u.id)}
                             }>Unfollow</button>
                             : <button disabled={props.followingInProgress.some(id => id == u.id)} onClick={() => {
-                                props.toggleIsFollowingInProgress(true, u.id)
-                                usersAPI.followUser(u.id).then(response => {
-                                    if (response.data.resultCode === 0) {
-                                        props.follow(u.id)
-                                    }
-                                    props.toggleIsFollowingInProgress(false, u.id)
-                                })
-                            }
+                                props.followThunk(u.id)}
                             }>Follow</button>}
                     </div>
                     <div className={us.usersData}>
