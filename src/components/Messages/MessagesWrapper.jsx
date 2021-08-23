@@ -1,6 +1,7 @@
 import React from "react";
 import Messages from "./Messages";
 import {connect} from "react-redux";
+import {WithAuthRedirect} from "../hoc/WithAuthRedirect";
 
 
 let mapStateToProps = (state) => {
@@ -23,6 +24,11 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const MessagesWrapper = connect(mapStateToProps, mapDispatchToProps)(Messages);
+let mapStateToPropsForRedirect = (state) => ({myLogin: state.authReducer.login});
+
+let addRedirect = WithAuthRedirect (Messages);
+addRedirect = connect(mapStateToPropsForRedirect)(addRedirect)
+
+const MessagesWrapper = connect(mapStateToProps, mapDispatchToProps)(addRedirect);
 
 export default MessagesWrapper;
