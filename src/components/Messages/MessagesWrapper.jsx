@@ -24,10 +24,7 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-let mapStateToPropsForRedirect = (state) => ({myLogin: state.authReducer.login});
-
 let addRedirect = WithAuthRedirect (Messages);
-addRedirect = connect(mapStateToPropsForRedirect)(addRedirect)
 
 const MessagesWrapper = connect(mapStateToProps, mapDispatchToProps)(addRedirect);
 
