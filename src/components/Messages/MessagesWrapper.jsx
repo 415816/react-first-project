@@ -2,6 +2,7 @@ import React from "react";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 import {WithAuthRedirect} from "../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 
 let mapStateToProps = (state) => {
@@ -24,8 +25,13 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
+export default compose (
+    connect(mapStateToProps, mapDispatchToProps),
+    WithAuthRedirect
+)(Messages)
+
+/*
 let addRedirect = WithAuthRedirect (Messages);
-
 const MessagesWrapper = connect(mapStateToProps, mapDispatchToProps)(addRedirect);
-
 export default MessagesWrapper;
+*/
