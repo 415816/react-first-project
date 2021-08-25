@@ -1,14 +1,6 @@
 import {connect} from "react-redux";
 import UsersContainer from "./UsersContainer";
-import {
-    follow, followThunk, getUsersThunk,
-    setCurrentPage,
-    setTotalCount,
-    setUsers,
-    toggleIsFetching,
-    toggleIsFollowingInProgress,
-    unfollow, unFollowThunk
-} from "../../redux/usersReducer";
+import {followThunk, getUsersThunk, unFollowThunk} from "../../redux/usersReducer";
 import {compose} from "redux";
 import {WithAuthRedirect} from "../hoc/WithAuthRedirect";
 
@@ -23,21 +15,6 @@ let mapStateToProps = (state) => {
         followingInProgress: state.usersPage.followingInProgress
     }
 }
-/*
-
-const UsersWrapper = connect(mapStateToProps, {
-                                                /!*follow,
-                                                unfollow,
-                                                setUsers,
-                                                setCurrentPage,
-                                                setTotalCount,
-                                                toggleIsFetching,
-                                                toggleIsFollowingInProgress,*!/
-                                                getUsersThunk,
-                                                followThunk,
-                                                unFollowThunk
-})(UsersContainer);
-*/
 
 export default compose(
     connect(mapStateToProps, {
@@ -47,5 +24,3 @@ export default compose(
     }),
     WithAuthRedirect,
 )(UsersContainer);
-//
-// export default ;
