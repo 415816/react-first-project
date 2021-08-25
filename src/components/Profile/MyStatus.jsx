@@ -18,7 +18,7 @@ class MyStatus extends React.Component {
             editModeOn: false,
         })
     }
-    changeStatus(value){
+    changeStatus(){
         this.setState({
             status: this.textStatus.current.value
         })
@@ -27,7 +27,7 @@ class MyStatus extends React.Component {
     render() {
         return <>
             {!this.state.editModeOn && <div onDoubleClick={this.activatedEditMode.bind(this)}>{this.state.status}</div>}
-            {this.state.editModeOn && <input ref={this.textStatus} onChange={this.changeStatus.bind(this)} onBlur={this.deactivatedEditMode.bind(this)} value={this.state.status}/>}
+            {this.state.editModeOn && <input ref={this.textStatus} autoFocus={true} onChange={this.changeStatus.bind(this)} onBlur={this.deactivatedEditMode.bind(this)} value={this.state.status}/>}
         </>
     }
 }
