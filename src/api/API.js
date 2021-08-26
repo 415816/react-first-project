@@ -1,4 +1,5 @@
 import * as axios from "axios";
+import {updateStatusFromUIThunk} from "../redux/profileReducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -30,5 +31,11 @@ export const authAPI = {
 export const profileAPI = {
     chooseProfile(id) {
         return instance.get(`profile/${id}`);
+    },
+    getStatus(id) {
+        return instance.get('profile/status/' + id);
+    },
+    updateStatusFromUIThunk(status) {
+        return instance.put('profile/status', {status: status});
     }
 }

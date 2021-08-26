@@ -1,33 +1,36 @@
 import React from "react";
 
 class MyStatus extends React.Component {
+
     state = {
         editModeOn: false,
-        status: 'Что нового?',
+        status: this.props.status,
     }
-
     textStatus = React.createRef();
 
-    activatedEditMode() {
+    activatedEditMode = () => {
         this.setState({
             editModeOn: true,
         })
     }
-    deactivatedEditMode() {
+    deactivatedEditMode = () => {
         this.setState({
             editModeOn: false,
         })
+        this.props.updateStatusFromUIThunk(this.state.status);
     }
-    changeStatus(){
+
+    editStatus = (e) => {
         this.setState({
-            status: this.textStatus.current.value
+            status: e.currentTarget.value,
         })
     }
 
+
     render() {
         return <>
-            {!this.state.editModeOn && <div onDoubleClick={this.activatedEditMode.bind(this)}>{this.state.status}</div>}
-            {this.state.editModeOn && <input ref={this.textStatus} autoFocus={true} onChange={this.changeStatus.bind(this)} onBlur={this.deactivatedEditMode.bind(this)} value={this.state.status}/>}
+            {!this.state.editModeOn && <div onClick={this.activatedEditMode}>{this.props.status || 'Что нового?'}</div>}
+            {this.state.editModeOn && <input onChange={this.editStatus} value={this.state.status} autoFocus={true}  onBlur={this.deactivatedEditMode}/>}
         </>
     }
 }

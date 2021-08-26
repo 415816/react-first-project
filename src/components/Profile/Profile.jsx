@@ -9,7 +9,7 @@ const Profile = (props) => {
     return (<div className={mP.profile}>
         <Avatar profile={props.profile}/>
         <MainInfo profile={props.profile}/>
-        <MyStatus />
+        <MyStatus status={props.status} updateStatusFromUIThunk={props.updateStatusFromUIThunk}/>
         <MyPostsWrapper />
     </div>)
 }
