@@ -28,7 +28,7 @@ const Users = (props) => {
                     </div>
                     <div className={us.usersData}>
                         <div className={us.name}>{u.name}</div>
-                        <div className={us.place}> {"u.city"}, {"u.country"}</div>
+                        <div className={us.place}> {u.id}</div>
                         <div className={us.discription}>{u.status}</div>
                         <div><NavLink to="/messages">
                             <button>Send message</button>
