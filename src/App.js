@@ -8,7 +8,7 @@ import MessagesWrapper from "./components/Messages/MessagesWrapper";
 import UsersWrapper from "./components/Users/UsersWrapper";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import Login, {LoginForm} from "./components/Login/Login";
 
 
 const App = (props) => {

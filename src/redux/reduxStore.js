@@ -5,14 +5,16 @@ import sidebarReducer from "./sidebarReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import thunk from "redux-thunk";
-
+import {reducer as formReducer} from "redux-form";
 
 let reducers = combineReducers({
         messagePage: messagesReduser,
         profilePage: profileReducer,
         sideBar: sidebarReducer,
         usersPage: usersReducer,
-        authReducer: authReducer
+        authReducer: authReducer,
+        form: formReducer,
+
     }
 );
 
