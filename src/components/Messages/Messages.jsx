@@ -10,7 +10,6 @@ const Messages = (props) => {
 
     let addNewMessage = (value) => {
         props.addNewMessage(value.newMessageBody)
-        console.log(value.newMessageBody);
     }
 
     return (

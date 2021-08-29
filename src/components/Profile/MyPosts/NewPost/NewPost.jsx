@@ -1,29 +1,29 @@
-import React, {createRef} from 'react';
+import React from 'react';
 import nP from './NewPost.module.css';
+import {Field, reduxForm} from "redux-form";
 
 const NewPost = (props) => {
-    const newPostText = React.createRef();
+    const addNewPos = (value) => {props.addNewPost(value.newPostBody);}
 
-    const addNewPos = () => {
-        let typ = 'ADD-NEW-POST';
-        let text = newPostText.current.value;
-        props.addNewPos(typ, text);
-    }
+    return <NewPostReduxForm onSubmit={addNewPos} />
+}
 
-    const changeNewPos = () => {
-        let typ = 'CHANGE-NEW-POST';
-        let letters = newPostText.current.value;
-        props.changeNewPos(typ, letters);
-    }
-
-    return (<div className={nP.newPost}>
-            <input ref={newPostText} value={props.newPost} onChange={changeNewPos}
-                   placeholder="Plese input your news" />
-            <div>
-                <button onClick={addNewPos}>Send</button>
-            </div>
+const NewPostForm = (props) => {
+    return(
+    <form className={nP.newPost} onSubmit={props.handleSubmit}>
+        <Field
+            component={'input'}
+            name='newPostBody'
+            placeholder="Plese input your news" />
+        <div>
+            <button>Send</button>
         </div>
+    </form>
     )
 }
+
+const NewPostReduxForm = reduxForm({
+    form: 'newPost'
+})(NewPostForm)
 
 export default NewPost;

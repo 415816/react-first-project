@@ -1,6 +1,7 @@
-import React, {createRef} from 'react';
+import React from 'react';
 import NewPost from "./NewPost";
 import {connect} from "react-redux";
+import {addNewPost} from "../../../../redux/profileReducer";
 
 let mapStateToProps = (state) => {
     return{
@@ -8,18 +9,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return{
-        addNewPos: (type, textNewPost) => {
-            dispatch({type: type, textNewPost: textNewPost});
-        },
-
-        changeNewPos: (type, postNewLetters) => {
-            dispatch({type: type, postNewLetters: postNewLetters});
-        }
-    }
-}
-
-const NewPostWrapper = connect(mapStateToProps, mapDispatchToProps)(NewPost);
+const NewPostWrapper = connect(mapStateToProps, {addNewPost})(NewPost);
 
 export default NewPostWrapper;

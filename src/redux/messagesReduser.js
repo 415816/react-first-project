@@ -23,7 +23,6 @@ const messageReduser = (state = initialState, action) => {
             return {
                 ...state,
                 collectMessages: [...state.collectMessages, newItem],
-                newMessage: '',
             }
         }
         default:

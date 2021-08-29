@@ -7,19 +7,12 @@ let initialState = {
         {id: 1, likes: 3, textPost: 'It is my first post!'},
         {id: 2, likes: 18, textPost: 'It is my zero post!'}
     ],
-    newPost: '',
     profile: null,
     status: '',
 };
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'CHANGE-NEW-POST': {
-            return {
-                ...state,
-                newPost: action.postNewLetters
-            }
-        }
         case 'ADD-NEW-POST': {
             let newPost = {
                 likes: 0,
@@ -46,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
 export const setProfile = (profile) => ({type: 'SET-PROFILE', profile: profile});
 export const getStatus = (status) => ({type: 'GET-STATUS', status: status});
 export const setStatus = (status) => ({type: 'SET-STATUS', status: status});
-
+export const addNewPost = (textNewPost) => ({type: 'ADD-NEW-POST',  textNewPost: textNewPost})
 export default profileReducer;
 
 export const chooseProfileThunk = (id) => {
