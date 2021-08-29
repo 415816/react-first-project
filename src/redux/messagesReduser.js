@@ -5,25 +5,16 @@ let initialState = {
         {id: 3, name: 'Tony'},
         {id: 4, name: 'Mashka-Kakashka'}
     ],
-
     collectMessages: [
         {id: 1, messag: "Hi!"},
         {id: 2, messag: "How are you?"},
         {id: 3, messag: "Are you sleep?"},
         {id: 4, messag: "I am kakashka!"}
     ],
-
-    newMessage: '',
 }
 
 const messageReduser = (state = initialState, action) => {
     switch (action.type) {
-        case 'CHANGE-NEW-MESSAGE': {
-            return {
-                ...state,
-                newMessage: action.messageNewLetters
-            }
-        }
         case 'ADD-NEW-MESSAGE': {
             let newItem = {
                 id: 5,
@@ -40,3 +31,8 @@ const messageReduser = (state = initialState, action) => {
     }
 }
 export default messageReduser;
+
+export const addNewMessage = (textNewMessage) => ({
+    type: 'ADD-NEW-MESSAGE',
+    textNewMessage: textNewMessage,
+})

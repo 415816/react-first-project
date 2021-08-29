@@ -3,6 +3,7 @@ import Messages from "./Messages";
 import {connect} from "react-redux";
 import {WithAuthRedirect} from "../hoc/WithAuthRedirect";
 import {compose} from "redux";
+import {addNewMessage} from "../../redux/messagesReduser";
 
 
 let mapStateToProps = (state) => {
@@ -14,24 +15,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addNewMessa: (typ, text) => {
-            dispatch({type: typ, textNewMessage: text});
-        },
-        changeNewMessa: (typ, newLetters) => {
-            dispatch({type: typ, messageNewLetters: newLetters})
-        }
-    }
-}
 
 export default compose (
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(mapStateToProps, {addNewMessage}),
     WithAuthRedirect
 )(Messages)
-
-/*
-let addRedirect = WithAuthRedirect (Messages);
-const MessagesWrapper = connect(mapStateToProps, mapDispatchToProps)(addRedirect);
-export default MessagesWrapper;
-*/
