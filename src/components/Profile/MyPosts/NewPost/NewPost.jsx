@@ -2,6 +2,7 @@ import React from 'react';
 import nP from './NewPost.module.css';
 import {Field, reduxForm} from "redux-form";
 import {maxLength, requaredField} from "../../../../utils/validators/validator";
+import {Input} from "../../../FormControls/Input";
 
 const maxLength15 = maxLength(15);
 
@@ -15,7 +16,7 @@ const NewPostForm = (props) => {
     return(
     <form className={nP.newPost} onSubmit={props.handleSubmit}>
         <Field
-            component={'input'}
+            component={Input}
             name='newPostBody'
             validate={[requaredField, maxLength15]}
             placeholder="Plese input your news" />
