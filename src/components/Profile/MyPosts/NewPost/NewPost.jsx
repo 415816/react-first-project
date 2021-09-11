@@ -2,7 +2,8 @@ import React from 'react';
 import nP from './NewPost.module.css';
 import {Field, reduxForm} from "redux-form";
 import {maxLength, requaredField} from "../../../../utils/validators/validator";
-import {Input} from "../../../FormControls/Input";
+import {Input} from "../../../FormControls/FormControl";
+
 
 const maxLength15 = maxLength(15);
 

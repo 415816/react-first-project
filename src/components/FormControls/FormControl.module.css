@@ -1,12 +1,13 @@
-.textAreaWrapper{
+.FormControl{
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.textAreaWrapper span {
+.FormControl span {
     color: red;
 }
 
 .borderRed{
     border: 2px solid red;
+    border-radius: 5px;
 }

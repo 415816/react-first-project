@@ -4,8 +4,8 @@ import Message from "./Message/Message";
 import mes from "./Messages.module.css";
 import {Field, reduxForm} from "redux-form";
 import {maxLength, requaredField} from "../../utils/validators/validator";
-import {TextArea} from "../FormControls/TextArea";
-import {Input} from "../FormControls/Input";
+import {TextArea} from "../FormControls/FormControl";
+
 
 const maxLeng30 = maxLength(30);
 

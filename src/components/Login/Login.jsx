@@ -1,6 +1,7 @@
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../FormControls/Input";
+
 import {maxLength, requaredField} from "../../utils/validators/validator";
+import {Input} from "../FormControls/FormControl";
 
 export const LoginForm = (props) => {
 
