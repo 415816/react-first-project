@@ -14,14 +14,16 @@
   float: right;
 }
 
-span{
+.butt{
   border: 1px solid black;
   border-radius: 7px;
   padding: 0 3px 0 3px;
   margin: 4px;
+  height: 20px;
+  width: 30px;
 }
 
-span:hover{
+.butt:hover{
   cursor: pointer;
   background-color: #fff;
 }

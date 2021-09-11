@@ -3,10 +3,11 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import mes from "./Messages.module.css";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../FormControls/Input";
 import {maxLength, requaredField} from "../../utils/validators/validator";
+import {TextArea} from "../FormControls/TextArea";
+import {Input} from "../FormControls/Input";
 
-const maxLeng = maxLength(50);
+const maxLeng30 = maxLength(30);
 
 const Messages = (props) => {
     let dialog = props.collectPeople.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
@@ -35,9 +36,9 @@ export default Messages;
 const NewMessageForm = (props) => {
     return (
     <form onSubmit={props.handleSubmit}>
-        <Field component={Input}
+        <Field component={TextArea}
                type='text'
-               validate={[requaredField, maxLeng]}
+               validate={[requaredField, maxLeng30]}
                name='newMessageBody'
                value={props.newMessage}
                placeholder="Please enter your message"/>

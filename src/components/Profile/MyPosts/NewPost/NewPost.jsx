@@ -20,9 +20,9 @@ const NewPostForm = (props) => {
             name='newPostBody'
             validate={[requaredField, maxLength15]}
             placeholder="Plese input your news" />
-        <div>
-            <button>Send</button>
-        </div>
+
+            <button className={nP.btn}>Send</button>
+
     </form>
     )
 }

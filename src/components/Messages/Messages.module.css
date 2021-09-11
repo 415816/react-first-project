@@ -8,3 +8,7 @@
 .message {
     margin: 5px;
 }
+
+.messages textarea{
+    border: red;
+}
