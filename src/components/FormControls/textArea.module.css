@@ -1,3 +1,12 @@
 .textAreaWrapper{
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
+.textAreaWrapper span {
+    color: red;
+}
+
+.borderRed{
+    border: 2px solid red;
 }
