@@ -10,7 +10,7 @@
   padding: 0 10px 0 10px;
   border-radius: 5px;
   width: 1000px;
-  height: 180px;
+  height: 150px;
 }
 
 .newPost button{
@@ -18,13 +18,9 @@
   height: 30px;
   cursor: pointer;
   border-radius: 5px;
+  float: right;
 }
 .newPost div{
   display:flex;
-  /*justify-content: flex-end;*/
   margin-bottom: 5px;
-}
-
-div .btn{
-  float: right;
 }

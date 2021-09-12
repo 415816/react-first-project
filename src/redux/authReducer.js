@@ -1,11 +1,10 @@
-import * as axios from "axios";
 import {authAPI} from "../api/API";
 
 let stateInit = {
     id: 19055,
     login: null,
     email: null,
-    resultCode: null,
+    isAuth: null,
     isFetching: false
 };
 
@@ -15,7 +14,7 @@ const authReducer = (state = stateInit, action) => {
             return {
                 ...state,
                 ...action.data,
-                resultCode: 0
+                isAuth: action.data.isAuth
             }
         }
         default:
@@ -23,14 +22,28 @@ const authReducer = (state = stateInit, action) => {
     }
 }
 
-export const setAuthUser = (id, login, email) => ({type: 'SET-AUTH-USER', data: {id, login, email}});
+export const setAuthUser = (id, login, email, isAuth) => ({type: 'SET-AUTH-USER', data: {id, login, email, isAuth}});
 
 export default authReducer;
 
 export const authThunk = () => (dispatch) => {
-        authAPI.exeAuth().then(response => {
-            if (response.resultCode === 0) {
-                dispatch(setAuthUser(response.data.id, response.data.login, response.data.email));
-            }
-        })
-    }
+    authAPI.exeAuth().then(response => {
+        if (response.resultCode === 0) {
+            dispatch(setAuthUser(response.data.id, response.data.login, response.data.email, true));
+        }
+    })
+}
+export const logInThunk = (email, password, rememberMe) => (dispatch) => {
+    authAPI.logIn(email, password, rememberMe).then(response => {
+        if (response.resultCode === 0) {
+            dispatch(authThunk());
+        }
+    })
+}
+export const logOutThunk = () => (dispatch) => {
+    authAPI.logOut().then(response => {
+        if (response.resultCode === 0) {
+            dispatch(setAuthUser(null, null, null, false));
+        }
+    })
+}

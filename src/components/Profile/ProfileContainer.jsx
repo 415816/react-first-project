@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {chooseProfileThunk, updateStatusFromUIThunk, getStatusFromAPIThunk} from "../../redux/profileReducer";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {authThunk} from "../../redux/authReducer";
 import {compose} from "redux";
 
@@ -18,11 +18,13 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+        if (!this.props.isAuth) return <Redirect to='/login/'/>
+
         return <Profile {...this.props} />
     }
 }
 
-let mapStateToProps = (state) => ({profile: state.profilePage.profile, myId: state.authReducer.id, status: state.profilePage.status});
+let mapStateToProps = (state) => ({profile: state.profilePage.profile, myId: state.authReducer.id, status: state.profilePage.status, isAuth: state.authReducer.isAuth});
 
 export default compose(
     connect(mapStateToProps, {chooseProfileThunk, authThunk, updateStatusFromUIThunk, getStatusFromAPIThunk}),

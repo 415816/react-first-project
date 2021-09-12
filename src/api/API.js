@@ -24,8 +24,14 @@ export const usersAPI = {
 
 export const authAPI = {
     exeAuth() {
-        return instance.get('auth/me').then(response => response.data)
-    }
+        return instance.get('auth/me').then(response => response.data);
+    },
+    logIn(email, password, rememberMe = false, captcha = false) {
+        return instance.post('/auth/login', {email, password, rememberMe, captcha}).then(response => response.data);
+    },
+    logOut() {
+        return instance.delete('/auth/login').then(response => response.data);
+    },
 }
 
 export const profileAPI = {

@@ -1,6 +1,6 @@
 .FormControl{
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .FormControl span {
@@ -10,4 +10,13 @@
 .borderRed{
     border: 2px solid red;
     border-radius: 5px;
+}
+
+
+.FormControl input,
+.FormControl textarea
+{
+    border-radius: 3px;
+    margin: 0;
+    padding: 0;
 }
