@@ -1,4 +1,5 @@
 import {authAPI} from "../api/API";
+import {stopSubmit} from "redux-form";
 
 let stateInit = {
     id: 19055,
@@ -37,6 +38,9 @@ export const logInThunk = (email, password, rememberMe) => (dispatch) => {
     authAPI.logIn(email, password, rememberMe).then(response => {
         if (response.resultCode === 0) {
             dispatch(authThunk());
+        } else {
+            let action = stopSubmit('login', {_error: response.messages[0]});
+            dispatch(action);
         }
     })
 }

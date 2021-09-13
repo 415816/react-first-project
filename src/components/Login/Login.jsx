@@ -1,23 +1,24 @@
 import {Field, reduxForm} from "redux-form";
-
 import {maxLength, requaredField} from "../../utils/validators/validator";
 import {Input} from "../FormControls/FormControl";
 import {connect} from "react-redux";
 import {logInThunk, logOutThunk} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
+import si from "../FormControls/FormControl.module.css"
 
 export const LoginForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <div><Field component={Input} validate={[requaredField, props.maxLength15]} name={'login'} placeholder={'login'} type={'email'}/></div>
         <div><Field component={Input} validate={[requaredField, props.maxLength15]} name={'pass'} placeholder={'password'} type={'password'}/></div>
         <div><Field component={'input'} name={'rememberMe'} type={'checkBox'}/>remember me</div>
+        {props.error && <div className={si.borderRed}>
+            {props.error}
+        </div>}
         <div><button value={'btnLogin'}>Login</button></div>
     </form>
 }
 
-const LoginReduxForm = reduxForm({
-    form: 'login',
-})(LoginForm)
+const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 export const Login = (props) => {
     const onSubmit = (allData) => {
