@@ -28,7 +28,7 @@ export const setAuthUser = (id, login, email, isAuth) => ({type: 'SET-AUTH-USER'
 export default authReducer;
 
 export const authThunk = () => (dispatch) => {
-    authAPI.exeAuth().then(response => {
+    return authAPI.exeAuth().then(response => {
         if (response.resultCode === 0) {
             dispatch(setAuthUser(response.data.id, response.data.login, response.data.email, true));
         }
