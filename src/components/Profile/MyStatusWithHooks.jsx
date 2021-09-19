@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const MyStatus = (props) => {
 
@@ -15,6 +15,9 @@ const MyStatus = (props) => {
         toggleEditMode(false);
         props.updateStatusFromUIThunk(status);
     }
+    useEffect( () => {
+        editStatus(props.status);
+    },[props.status]);
 
     return <>
         {!editModeOn && <div onClick={activatedEditMode}>{props.status || 'Что нового?'}</div>}
