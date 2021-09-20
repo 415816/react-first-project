@@ -1,13 +1,14 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import Users from "./Users";
 import Preloader from "../Preloader/Preloader";
 
-class UsersContainer extends React.Component {
+class UsersContainer extends PureComponent {
     componentDidMount() {
         this.props.getUsersThunk(this.props.currentPage, this.props.usersOnPage)}
 
     onPageChanged = (pageNumber) => {
         this.props.getUsersThunk(pageNumber, this.props.usersOnPage)}
+
 
     render() {
         return <>

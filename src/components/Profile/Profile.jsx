@@ -3,7 +3,6 @@ import MainInfo from "./MainInfo/MainInfo";
 
 import mP from "./Profile.module.css";
 import MyPostsWrapper from "./MyPosts/MyPostsWrapper";
-import MyStatus from "./MyStatus";
 import MyStatusWithHooks from "./MyStatusWithHooks";
 
 const Profile = (props) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {chooseProfileThunk, updateStatusFromUIThunk, getStatusFromAPIThunk} from "../../redux/profileReducer";
@@ -6,7 +6,7 @@ import {Redirect, withRouter} from "react-router-dom";
 import {authThunk} from "../../redux/authReducer";
 import {compose} from "redux";
 
-class ProfileContainer extends React.Component {
+class ProfileContainer extends PureComponent {
     componentDidMount() {
         let userID = this.props.match.params.userID;
         this.props.authThunk();

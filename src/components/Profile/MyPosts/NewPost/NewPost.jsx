@@ -8,25 +8,28 @@ import {Input} from "../../../FormControls/FormControl";
 const maxLength15 = maxLength(15);
 
 const NewPost = (props) => {
-    const addNewPos = (value) => {props.addNewPost(value.newPostBody);}
 
-    return <NewPostReduxForm onSubmit={addNewPos} />
+    const addNewPos = (value) => {
+        props.addNewPost(value.newPostBody);
+    }
+    return <NewPostReduxForm onSubmit={addNewPos}/>
 }
 
-const NewPostForm = (props) => {
-    return(
-    <form className={nP.newPost} onSubmit={props.handleSubmit}>
-        <Field
-            component={Input}
-            name='newPostBody'
-            validate={[requaredField, maxLength15]}
-            placeholder="Plese input your news" />
+const NewPostForm = React.memo((props) => {
+    console.log('hello');
+    return (
+        <form className={nP.newPost} onSubmit={props.handleSubmit}>
+            <Field
+                component={Input}
+                name='newPostBody'
+                validate={[requaredField, maxLength15]}
+                placeholder="Plese input your news"/>
 
             <button className={nP.btn}>Send</button>
 
-    </form>
+        </form>
     )
-}
+})
 
 const NewPostReduxForm = reduxForm({
     form: 'newPost'
