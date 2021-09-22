@@ -27,27 +27,25 @@ export const setAuthUser = (id, login, email, isAuth) => ({type: 'SET-AUTH-USER'
 
 export default authReducer;
 
-export const authThunk = () => (dispatch) => {
-    return authAPI.exeAuth().then(response => {
-        if (response.resultCode === 0) {
-            dispatch(setAuthUser(response.data.id, response.data.login, response.data.email, true));
-        }
-    })
+export const authThunk = () => async (dispatch) => {
+    const response = await authAPI.exeAuth();
+    if (response.resultCode === 0) {
+        dispatch(setAuthUser(response.data.id, response.data.login, response.data.email, true));
+    }
 }
-export const logInThunk = (email, password, rememberMe) => (dispatch) => {
-    authAPI.logIn(email, password, rememberMe).then(response => {
-        if (response.resultCode === 0) {
-            dispatch(authThunk());
-        } else {
-            let action = stopSubmit('login', {_error: response.messages[0]});
-            dispatch(action);
-        }
-    })
+
+export const logInThunk = (email, password, rememberMe) => async (dispatch) => {
+    const response = await authAPI.logIn(email, password, rememberMe);
+    if (response.resultCode === 0) {
+        dispatch(authThunk());
+    } else {
+        let action = stopSubmit('login', {_error: response.messages[0]});
+        dispatch(action);
+    }
 }
-export const logOutThunk = () => (dispatch) => {
-    authAPI.logOut().then(response => {
-        if (response.resultCode === 0) {
-            dispatch(setAuthUser(null, null, null, false));
-        }
-    })
+export const logOutThunk = () => async (dispatch) => {
+    const response = await authAPI.logOut()
+    if (response.resultCode === 0) {
+        dispatch(setAuthUser(null, null, null, false));
+    }
 }

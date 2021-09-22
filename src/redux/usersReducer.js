@@ -81,37 +81,34 @@ export const toggleIsFollowingInProgress = (isFetching, id) => ({
 
 
 export const getUsersThunk = (currentPage, usersOnPage) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
         dispatch(setCurrentPage(currentPage));
-        usersAPI.getUsers(currentPage, usersOnPage).then(response => {
+        const response = await usersAPI.getUsers(currentPage, usersOnPage);
             dispatch(toggleIsFetching(false));
             dispatch(setUsers(response.items));
             dispatch(setTotalCount(response.totalCount));
-        })
     }
 }
 
 export const followThunk = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFollowingInProgress(true, id));
-        usersAPI.followUser(id).then(response => {
+        const response = await usersAPI.followUser(id);
             if (response.data.resultCode === 0) {
                 dispatch(follow(id));
             }
             dispatch(toggleIsFollowingInProgress(false, id));
-        })
     }
 }
 export const unFollowThunk = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFollowingInProgress(true, id));
-        usersAPI.unfollowUser(id).then(response => {
+        const response = await usersAPI.unfollowUser(id);
             if (response.data.resultCode == 0) {
                 dispatch(unfollow(id));
             }
             dispatch(toggleIsFollowingInProgress(false, id));
-        })
     }
 }
 export default usersReducer;

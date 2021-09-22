@@ -39,31 +39,28 @@ const profileReducer = (state = initialState, action) => {
 export const setProfile = (profile) => ({type: 'SET-PROFILE', profile: profile});
 export const getStatus = (status) => ({type: 'GET-STATUS', status: status});
 export const setStatus = (status) => ({type: 'SET-STATUS', status: status});
-export const addNewPost = (textNewPost) => ({type: 'ADD-NEW-POST',  textNewPost: textNewPost})
+export const addNewPost = (textNewPost) => ({type: 'ADD-NEW-POST', textNewPost: textNewPost})
 export default profileReducer;
 
 export const chooseProfileThunk = (id) => {
-    return (dispatch) => {
-        profileAPI.chooseProfile(id).then(response => {
-            dispatch(setProfile(response.data));
-        })
+    return async (dispatch) => {
+        const response = await profileAPI.chooseProfile(id);
+        dispatch(setProfile(response.data));
     }
 }
 
 export const getStatusFromAPIThunk = (id) => {
-    return (dispatch) => {
-        profileAPI.getStatus(id).then(response => {
-            dispatch(setStatus(response.data));
-        })
+    return async (dispatch) => {
+        const response = await profileAPI.getStatus(id);
+        dispatch(setStatus(response.data));
     }
 }
 
 export const updateStatusFromUIThunk = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatusFromUIThunk(status).then(response => {
-            if(response.data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        })
+    return async (dispatch) => {
+        const response = await profileAPI.updateStatusFromUIThunk(status);
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     }
 }
