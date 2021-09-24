@@ -11,18 +11,20 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {Component} from "react";
 import {compose} from "redux";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initialize} from "./redux/appReducer";
 import Preloader from "./components/Preloader/Preloader";
+import store from "./redux/reduxStore";
 
 
 class App extends Component {
     componentDidMount() {
         this.props.initialize();
     }
+
     render() {
         if (!this.props.initialized) {
-            return <Preloader />
+            return <Preloader/>
         }
 
         return (
@@ -49,6 +51,14 @@ class App extends Component {
 const mapStateToProps = (state) => ({
     initialized: state.appReducer.initialized
 })
-export default compose (
+const AppContainer = compose(
     withRouter,
-    connect(mapStateToProps, {initialize})) (App);
+    connect(mapStateToProps, {initialize}))(App);
+
+export const MainApp = () => {
+    return <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+}
