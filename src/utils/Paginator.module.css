@@ -1,0 +1,19 @@
+
+.numerationPages {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    position: relative;
+}
+
+.numerationPages span {
+    width: 35px;
+    padding: 0;
+    cursor: pointer;
+    border: black 1px solid;
+    border-radius: 3px;
+}
+
+.selectedPage {
+    font-weight: bold;
+}

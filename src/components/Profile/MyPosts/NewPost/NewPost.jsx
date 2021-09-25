@@ -16,7 +16,6 @@ const NewPost = (props) => {
 }
 
 const NewPostForm = React.memo((props) => {
-    console.log('hello');
     return (
         <form className={nP.newPost} onSubmit={props.handleSubmit}>
             <Field
