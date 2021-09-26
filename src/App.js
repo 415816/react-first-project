@@ -1,6 +1,4 @@
 import './App.css';
-import Music from './components/Music/Music';
-import News from './components/News/News';
 import SideBar from './components/SideBar/SideBar';
 import Settings from './components/Settings/Settings';
 import {BrowserRouter, Route, withRouter} from 'react-router-dom';
@@ -15,6 +13,10 @@ import {connect, Provider} from "react-redux";
 import {initialize} from "./redux/appReducer";
 import Preloader from "./components/Preloader/Preloader";
 import store from "./redux/reduxStore";
+import React from "react";
+
+const News = React.lazy(() => import('./components/News/News'));
+const Music = React.lazy(() => import('./components/Music/Music'));
 
 
 class App extends Component {
@@ -36,8 +38,10 @@ class App extends Component {
                         <Route exact path='/' render={() => <ProfileContainer/>}/>
                         <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
                         <Route path='/messages' render={() => <MessagesWrapper/>}/>
-                        <Route path='/news' component={News}/>
-                        <Route path='/music' component={Music}/>
+                        <React.Suspense fallback={<Preloader/>}>
+                            <Route path='/news' component={News}/>
+                            <Route path='/music' component={Music}/>
+                        </React.Suspense>
                         <Route path='/users' render={() => <UsersWrapper/>}/>
                         <Route path='/Settings' component={Settings}/>
                         <Route path='/login' render={() => <Login/>}/>
