@@ -7,8 +7,8 @@ import MyStatusWithHooks from "./MyStatusWithHooks";
 
 const Profile = (props) => {
     return (<div className={mP.profile}>
-        <Avatar profile={props.profile}/>
-        <MainInfo profile={props.profile}/>
+        <Avatar setProfilePhotoThunk={props.setProfilePhotoThunk} profile={props.profile} isOwner={props.match.params.userID}/>
+        <MainInfo profile={props.profile} myId={props.myId}/>
         <MyStatusWithHooks status={props.status} updateStatusFromUIThunk={props.updateStatusFromUIThunk}/>
         <MyPostsWrapper />
     </div>)

@@ -33,6 +33,8 @@ const MainInfo = (props) => {
             <a href={youtubeLink}><div>{props.profile.contacts.youtube}</div></a>
             <a href={mainLink}><div>{props.profile.contacts.mainLink}</div></a>
             <a href={githubLink}><div>{props.profile.contacts.github}</div></a>
+            <div>{props.myId}</div>
+
         </div>)
 }
 

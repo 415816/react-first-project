@@ -1,13 +1,18 @@
 import React, {PureComponent} from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {chooseProfileThunk, updateStatusFromUIThunk, getStatusFromAPIThunk} from "../../redux/profileReducer";
+import {
+    chooseProfileThunk,
+    updateStatusFromUIThunk,
+    getStatusFromAPIThunk,
+    setProfilePhotoThunk
+} from "../../redux/profileReducer";
 import {Redirect, withRouter} from "react-router-dom";
 import {authThunk} from "../../redux/authReducer";
 import {compose} from "redux";
 
 class ProfileContainer extends PureComponent {
-    componentDidMount() {
+    refreshProfile(){
         let userID = this.props.match.params.userID;
         this.props.authThunk();
         if (!userID) {
@@ -18,6 +23,14 @@ class ProfileContainer extends PureComponent {
         }
         this.props.chooseProfileThunk(userID);
         this.props.getStatusFromAPIThunk(userID);
+    }
+    componentDidMount() {
+        this.refreshProfile();
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userID != prevProps.match.params.userID) {
+        this.refreshProfile();
+        }
     }
 
     render() {
@@ -30,6 +43,6 @@ class ProfileContainer extends PureComponent {
 let mapStateToProps = (state) => ({profile: state.profilePage.profile, myId: state.authReducer.id, status: state.profilePage.status, isAuth: state.authReducer.isAuth});
 
 export default compose(
-    connect(mapStateToProps, {chooseProfileThunk, authThunk, updateStatusFromUIThunk, getStatusFromAPIThunk}),
+    connect(mapStateToProps, {chooseProfileThunk, authThunk, updateStatusFromUIThunk, getStatusFromAPIThunk, setProfilePhotoThunk}),
     withRouter
 )(ProfileContainer)

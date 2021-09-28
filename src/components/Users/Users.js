@@ -5,7 +5,6 @@ import React from "react";
 import Paginator from "../../utils/Paginator";
 
 const Users = (props) => {
-    //console.log(props)
     return (
         <>
             <Paginator
