@@ -11,7 +11,7 @@ const Avatar = (props) => {
 
     return (<div>
         <img className={av.avatar} src={props.profile.photos.large || ava}></img>
-        {!props.isOwner && <input type="file" onChange={changeAva}/>}
+        {!props.isOwner && <div><label for={av.inputAva} id={av.labelAva}> Choose avatar </label><input id={av.inputAva} type="file" onChange={changeAva}/></div>  }
     </div>)
 }
 export default Avatar;

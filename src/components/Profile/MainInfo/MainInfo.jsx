@@ -11,7 +11,6 @@ const MainInfo = (props) => {
     let youtubeLink = props.profile.contacts.youtube;
     let mainLink = props.profile.contacts.mainLink;
     let githubLink = props.profile.contacts.github;
-debugger
     const checkAdd = (contact) => {
         if ((contact != null) && (!contact.includes('https'))) {
             return ('https://' + contact);
