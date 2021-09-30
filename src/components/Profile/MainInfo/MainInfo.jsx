@@ -11,29 +11,25 @@ const MainInfo = (props) => {
     let youtubeLink = props.profile.contacts.youtube;
     let mainLink = props.profile.contacts.mainLink;
     let githubLink = props.profile.contacts.github;
-
-    if ((vkLink != null) && (!vkLink.includes('https'))) {vkLink = 'https://' + props.profile.contacts.vk}
-    if ((facebookLink != null) && (!facebookLink.includes('https'))) {facebookLink = 'https://' + props.profile.contacts.facebook}
-    if ((twitterLink != null) && (!twitterLink.includes('https'))) {twitterLink = 'https://' + props.profile.contacts.twitter}
-    if ((websiteLink != null) && (!websiteLink.includes('https'))) {websiteLink = 'https://' + props.profile.contacts.website}
-    if ((instagramLink != null) && (!instagramLink.includes('https'))) {instagramLink = 'https://' + props.profile.contacts.instagram}
-    if ((youtubeLink != null) && (!youtubeLink.includes('https'))) {youtubeLink = 'https://' + props.profile.contacts.youtube}
-    if ((mainLink != null) && (!mainLink.includes('https'))) {mainLink = 'https://' + props.profile.contacts.mainLink}
-    if ((githubLink != null) && (!githubLink.includes('https')) ) {githubLink = 'https://' + props.profile.contacts.github}
-
+debugger
+    const checkAdd = (contact) => {
+        if ((contact != null) && (!contact.includes('https'))) {
+            return ('https://' + contact);
+        } else return contact;
+    }
     return (
         <div className={mi.main_info}>
             <div>{props.profile.fullName}</div>
             <div>{props.profile.aboutMe}</div>
-            <a href={vkLink}><div>{props.profile.contacts.vk}</div></a>
-            <a href={facebookLink}><div>{props.profile.contacts.facebook}</div></a>
-            <a href={twitterLink}><div>{props.profile.contacts.twitter}</div></a>
-            <a href={websiteLink}><div>{props.profile.contacts.website}</div></a>
-            <a href={instagramLink}><div>{props.profile.contacts.instagram}</div></a>
-            <a href={youtubeLink}><div>{props.profile.contacts.youtube}</div></a>
-            <a href={mainLink}><div>{props.profile.contacts.mainLink}</div></a>
-            <a href={githubLink}><div>{props.profile.contacts.github}</div></a>
-            <div>{props.myId}</div>
+            <a href={checkAdd(vkLink)}><div>{checkAdd(vkLink)}</div></a>
+            <a href={checkAdd(facebookLink)}><div>{props.profile.contacts.facebook}</div></a>
+            <a href={checkAdd(twitterLink)}><div>{props.profile.contacts.twitter}</div></a>
+            <a href={checkAdd(websiteLink)}><div>{props.profile.contacts.website}</div></a>
+            <a href={checkAdd(instagramLink)}><div>{props.profile.contacts.instagram}</div></a>
+            <a href={checkAdd(youtubeLink)}><div>{props.profile.contacts.youtube}</div></a>
+            <a href={checkAdd(mainLink)}><div>{props.profile.contacts.mainLink}</div></a>
+            <a href={checkAdd(githubLink)}><div>{props.profile.contacts.github}</div></a>
+            <div>ID: {props.profile.userId || props.myId}</div>
 
         </div>)
 }
