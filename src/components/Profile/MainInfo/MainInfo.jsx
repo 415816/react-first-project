@@ -20,6 +20,8 @@ const MainInfo = (props) => {
         <div className={mi.main_info}>
             <div>{props.profile.fullName}</div>
             <div>{props.profile.aboutMe}</div>
+            <div>looking For A Job: {props.profile.lookingForAJob ? "yes" : "no"}</div>
+            <div>{props.profile.lookingForAJob && ("looking For A Job Description: " + props.profile.lookingForAJobDescription)} </div>
             <a href={checkAdd(vkLink)}><div>{checkAdd(vkLink)}</div></a>
             <a href={checkAdd(facebookLink)}><div>{props.profile.contacts.facebook}</div></a>
             <a href={checkAdd(twitterLink)}><div>{props.profile.contacts.twitter}</div></a>
