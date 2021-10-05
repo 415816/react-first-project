@@ -33,6 +33,9 @@ const profileReducer = (state = initialState, action) => {
         case 'SET-AVATAR': {
             return {...state, profile: {...state.profile, photos: action.photos}}
         }
+        case 'UPDATE-PROFILE-DATA': {
+            return {...state, profile: action.profile}
+        }
 
         default:
             return state;
@@ -44,6 +47,7 @@ export const getStatus = (status) => ({type: 'GET-STATUS', status: status});
 export const setStatus = (status) => ({type: 'SET-STATUS', status: status});
 export const addNewPost = (textNewPost) => ({type: 'ADD-NEW-POST', textNewPost: textNewPost});
 export const setAvatar = (photos) => ({type: 'SET-AVATAR', photos});
+export const updateProfileData = (profile) => ({type: 'UPDATE-PROFILE-DATA', profile: profile});
 export default profileReducer;
 
 export const chooseProfileThunk = (id) => {
@@ -62,7 +66,7 @@ export const getStatusFromAPIThunk = (id) => {
 
 export const updateStatusFromUIThunk = (status) => {
     return async (dispatch) => {
-        const response = await profileAPI.updateStatusFromUIThunk(status);
+        const response = await profileAPI.updateStatusFromUI(status);
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
         }
@@ -74,6 +78,14 @@ export const setProfilePhotoThunk = (photo) => {
         const response = await profileAPI.setPhoto(photo);
         if (response.data.resultCode === 0) {
             dispatch(setAvatar(response.data.data.photos));
+        }
+    }
+}
+export const updateProfileDataFromUIThunk = (profil) => {
+    return async (dispatch) => {
+        const response = await profileAPI.updateProfileDataFromUI(profil);
+        if (response.data.resultCode === 0) {
+            dispatch(updateProfileData(profil));
         }
     }
 }

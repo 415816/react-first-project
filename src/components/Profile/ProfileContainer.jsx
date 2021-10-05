@@ -5,7 +5,8 @@ import {
     chooseProfileThunk,
     updateStatusFromUIThunk,
     getStatusFromAPIThunk,
-    setProfilePhotoThunk
+    setProfilePhotoThunk,
+    updateProfileDataFromUIThunk
 } from "../../redux/profileReducer";
 import {Redirect, withRouter} from "react-router-dom";
 import {authThunk} from "../../redux/authReducer";
@@ -43,6 +44,6 @@ class ProfileContainer extends PureComponent {
 let mapStateToProps = (state) => ({profile: state.profilePage.profile, myId: state.authReducer.id, status: state.profilePage.status, isAuth: state.authReducer.isAuth});
 
 export default compose(
-    connect(mapStateToProps, {chooseProfileThunk, authThunk, updateStatusFromUIThunk, getStatusFromAPIThunk, setProfilePhotoThunk}),
+    connect(mapStateToProps, {chooseProfileThunk, authThunk, updateStatusFromUIThunk, getStatusFromAPIThunk, setProfilePhotoThunk, updateProfileDataFromUIThunk}),
     withRouter
 )(ProfileContainer)

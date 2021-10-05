@@ -41,7 +41,7 @@ export const profileAPI = {
     getStatus(id) {
         return instance.get('profile/status/' + id);
     },
-    updateStatusFromUIThunk(status) {
+    updateStatusFromUI(status) {
         return instance.put('profile/status', {status: status});
     },
     setPhoto(photo) {
@@ -52,7 +52,15 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data',
             }
         })
-    }
+    },
+    updateProfileDataFromUI(prof) {
+        return instance.put('profile', {
+            userId: prof.userID,
+            aboutMe: prof.aboutMe,
+            lookingForAJob: prof.lookingForAJob,
+            lookingForAJobDescription: prof.lookingForAJobDescription,
+            fullName: prof.fullName});
+    },
 
 
 }

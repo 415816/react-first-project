@@ -1,7 +1,8 @@
 import mi from './MainInfo.module.css';
 import Preloader from "../../Preloader/Preloader";
 import {useState} from "react";
-import {ProfileDataReduxForm} from "./ProfileDataForm";
+import {ProfileDataReduxForm} from "./ProfileDataReduxForm";
+
 
 const MainInfo = (props) => {
     const [editMode, toggleEditMode] = useState(false);
@@ -13,11 +14,20 @@ const MainInfo = (props) => {
     if (props.profile == null) {
         return <Preloader/>
     }
-
+    const onSubmit = (allData) => {
+        debugger
+        console.log(props.myId, allData.aboutMe, allData.lookingForAJob, allData.lookingForAJobDescription, allData.fullName);
+        props.updateProfileDataFromUIThunk(
+                {userId: props.myId,
+                aboutMe: allData.aboutMe,
+                lookingForAJob: allData.lookingForAJob,
+                lookingForAJobDescription: allData.lookingForAJobDescription,
+                fullName: allData.fullName});
+    }
 
     return (
         <div className={mi.main_info}>
-            {editMode ? <ProfileDataReduxForm profile={props.profile} /> : <ProfileData editModeOn={editModeOn} isOwner={props.isOwner} profile={props.profile}/>}
+            {editMode ? <ProfileDataReduxForm profile={props.profile}  onSubmit={onSubmit}/> : <ProfileData editModeOn={editModeOn} isOwner={props.isOwner} profile={props.profile}/>}
             <div>
                 <b>Contacts: </b>
                 {Object.keys(props.profile.contacts).map(key => {
