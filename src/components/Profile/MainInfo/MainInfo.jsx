@@ -15,19 +15,14 @@ const MainInfo = (props) => {
         return <Preloader/>
     }
     const onSubmit = (allData) => {
-        debugger
         console.log(props.myId, allData.aboutMe, allData.lookingForAJob, allData.lookingForAJobDescription, allData.fullName);
-        props.updateProfileDataFromUIThunk(
-                {userId: props.myId,
-                aboutMe: allData.aboutMe,
-                lookingForAJob: allData.lookingForAJob,
-                lookingForAJobDescription: allData.lookingForAJobDescription,
-                fullName: allData.fullName});
+        props.updateProfileDataFromUIThunk(allData);
+        toggleEditMode(false);
     }
 
     return (
         <div className={mi.main_info}>
-            {editMode ? <ProfileDataReduxForm profile={props.profile}  onSubmit={onSubmit}/> : <ProfileData editModeOn={editModeOn} isOwner={props.isOwner} profile={props.profile}/>}
+            {editMode ? <ProfileDataReduxForm initialValues={props.profile} profile={props.profile}  onSubmit={onSubmit}/> : <ProfileData editModeOn={editModeOn} isOwner={props.isOwner} profile={props.profile}/>}
             <div>
                 <b>Contacts: </b>
                 {Object.keys(props.profile.contacts).map(key => {

@@ -34,7 +34,10 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: {...state.profile, photos: action.photos}}
         }
         case 'UPDATE-PROFILE-DATA': {
-            return {...state, profile: action.profile}
+            return {...state,  profile: {...state.profile, aboutMe: action.profile.aboutMe,
+                                                        lookingForAJob: action.profile.lookingForAJob,
+                                                        lookingForAJobDescription: action.profile.lookingForAJobDescription,
+                                                        fullName: action.profile.fullName}}
         }
 
         default:
