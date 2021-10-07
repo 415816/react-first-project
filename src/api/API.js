@@ -54,11 +54,7 @@ export const profileAPI = {
         })
     },
     updateProfileDataFromUI(prof) {
-        return instance.put('profile', {
-            aboutMe: prof.aboutMe,
-            lookingForAJob: prof.lookingForAJob,
-            lookingForAJobDescription: prof.lookingForAJobDescription,
-            fullName: prof.fullName});
+        return instance.put('profile', prof);
     },
 
 

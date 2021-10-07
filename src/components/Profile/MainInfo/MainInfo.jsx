@@ -1,7 +1,9 @@
 import mi from './MainInfo.module.css';
 import Preloader from "../../Preloader/Preloader";
 import {useState} from "react";
-import {ProfileDataReduxForm} from "./ProfileDataReduxForm";
+import {ProfileDataForm, ProfileDataReduxForm} from "./ProfileDataReduxForm";
+import {Field, reduxForm} from "redux-form";
+import {Input} from "../../FormControls/FormControl";
 
 
 const MainInfo = (props) => {
@@ -14,35 +16,23 @@ const MainInfo = (props) => {
     if (props.profile == null) {
         return <Preloader/>
     }
-    const onSubmit = (allData) => {
-        console.log(props.myId, allData.aboutMe, allData.lookingForAJob, allData.lookingForAJobDescription, allData.fullName);
-        props.updateProfileDataFromUIThunk(allData);
+    const onSubmit = async (allData) => {
+        console.log(allData);
+        await props.updateProfileDataFromUIThunk(allData);
         toggleEditMode(false);
     }
 
     return (
         <div className={mi.main_info}>
-            {editMode ? <ProfileDataReduxForm initialValues={props.profile} profile={props.profile}  onSubmit={onSubmit}/> : <ProfileData editModeOn={editModeOn} isOwner={props.isOwner} profile={props.profile}/>}
-            <div>
-                <b>Contacts: </b>
-                {Object.keys(props.profile.contacts).map(key => {
-                    return <Contacts contactName={key} contactValue={props.profile.contacts[key]}/>
-                })
-                }
-            </div>
+            {editMode
+                ? <ProfileDataReduxForm initialValues={props.profile} profile={props.profile}  onSubmit={onSubmit}/>
+                : <ProfileData editModeOn={editModeOn} isOwner={props.isOwner} profile={props.profile}/>}
             <div><b>ID: </b>{props.profile.userId || props.myId}</div>
 
         </div>)
 }
 
 export default MainInfo;
-
-const Contacts = ({contactName, contactValue}) => {
-    if (contactValue && (!contactValue.includes('https'))) {
-        contactValue = 'https://' + contactValue;
-    }
-    return contactValue && <div><b>{contactName}: </b> <a href={contactValue}>{contactValue} </a></div>
-}
 
 const ProfileData = (props) => {
     return (<>
@@ -54,5 +44,14 @@ const ProfileData = (props) => {
             props.profile.lookingForAJob &&
             <div><b>looking For A Job Description: </b>{props.profile.lookingForAJobDescription} </div>
         }
+        <div>
+            <b>Contacts: </b>
+            {Object.keys(props.profile.contacts).map(key => {
+                return <div key={key}> <b>{key}: </b> <span>{props.profile.contacts[key]}</span> </div>
+            })
+            }
+        </div>
     </>)
 }
+
+export const MainInfoReduxForm = reduxForm({form: 'profile'})(MainInfo)

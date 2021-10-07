@@ -16,8 +16,8 @@ const Users = (props) => {
             />
             <div className={us.container}>
                 {props.users.map(u =>
-                    <div className={us.usersContainer}>
-                        <div className={us.usersAvaBut}>
+                    <div key={u.id} className={us.usersContainer}>
+                        <div key={u.id} className={us.usersAvaBut}>
                             <NavLink to={'/profile/' + u.id}><img
                                 src={u.photos.small != null ? u.photos.small : ava}/></NavLink>
                             {u.followed

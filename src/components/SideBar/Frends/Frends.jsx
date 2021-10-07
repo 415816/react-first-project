@@ -1,7 +1,7 @@
 import f from './Frends.module.css'
 
 const Frends = (props) => {
-    let frend = props.sidebar.map(pers => <Person name={pers.name} />);
+    let frend = props.sidebar.map(pers => <Person key={pers.id} name={pers.name} />);
     return (
         frend
     )

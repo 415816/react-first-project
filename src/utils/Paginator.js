@@ -21,8 +21,8 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, porti
                 {portionNumber > 1 && <button onClick={() => {setPortionNumber(portionNumber - 1)}}>&lt;</button>}
                 {pages.map(p => {
                     if((p <= rightPortionFrenge) && (p > leftPortionFrenge)) {
-                    return <span onClick={() => onPageChanged(p)}
-                                 className={p === currentPage && us.selectedPage}>{p}</span>
+                    return <span key={p} onClick={() => onPageChanged(p)}
+                                 className={p === currentPage ? us.selectedPage : undefined}>{p}</span>
                 }else {return false;}
                 })}
                 {portionNumber != portionCount && <button onClick={() => {setPortionNumber(portionNumber + 1)}}>&gt;</button>}
