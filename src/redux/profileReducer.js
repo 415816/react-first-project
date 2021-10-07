@@ -33,22 +33,22 @@ const profileReducer = (state = initialState, action) => {
         case 'SET-AVATAR': {
             return {...state, profile: {...state.profile, photos: action.photos}}
         }
-        debugger
         case 'UPDATE-PROFILE-DATA': {
-            debugger
-            return {...state,  profile: {...state.profile, aboutMe: action.profile.aboutMe,
-                                                        lookingForAJob: action.profile.lookingForAJob,
-                                                        lookingForAJobDescription: action.profile.lookingForAJobDescription,
-                                                        fullName: action.profile.fullName,
-                    contacts: { facebook: action.profile.contacts.facebook,
-                                                website: action.profile.contacts.website,
-                                                vk:     action.profile.contacts.vk,
-                                                twitter: action.profile.contacts.twitter,
-                                                instagram: action.profile.contacts.instagram,
-                                                youtube: action.profile.contacts.youtube,
-                                                github: action.profile.contacts.github,
-                                                mainLink: action.profile.contacts.mainLink}}}
-        }
+            return {...state, profile: {...action.profile, contacts: {...action.profile.contacts}}}}
+
+
+                // profile: {...state.profile, aboutMe: action.profile.aboutMe,
+                //                                         lookingForAJob: action.profile.lookingForAJob,
+                //                                         lookingForAJobDescription: action.profile.lookingForAJobDescription,
+                //                                         fullName: action.profile.fullName,
+                //                     contacts: { facebook: action.profile.contacts.facebook,
+                //                                 website: action.profile.contacts.website,
+                //                                 vk:     action.profile.contacts.vk,
+                //                                 twitter: action.profile.contacts.twitter,
+                //                                 instagram: action.profile.contacts.instagram,
+                //                                 youtube: action.profile.contacts.youtube,
+                //                                 github: action.profile.contacts.github,
+                //                                 mainLink: action.profile.contacts.mainLink}}}}
 
         default:
             return state;
