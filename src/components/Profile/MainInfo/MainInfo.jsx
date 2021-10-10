@@ -1,9 +1,8 @@
 import mi from './MainInfo.module.css';
 import Preloader from "../../Preloader/Preloader";
 import {useState} from "react";
-import {ProfileDataForm, ProfileDataReduxForm} from "./ProfileDataReduxForm";
-import {Field, reduxForm} from "redux-form";
-import {Input} from "../../FormControls/FormControl";
+import {ProfileDataReduxForm} from "./ProfileDataReduxForm";
+import {reduxForm} from "redux-form";
 
 
 const MainInfo = (props) => {
@@ -17,9 +16,8 @@ const MainInfo = (props) => {
         return <Preloader/>
     }
     const onSubmit = async (allData) => {
-        console.log(allData);
         await props.updateProfileDataFromUIThunk(allData);
-        toggleEditMode(false);
+        // toggleEditMode(false);
     }
 
     return (

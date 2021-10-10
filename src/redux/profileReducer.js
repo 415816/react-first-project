@@ -1,4 +1,5 @@
 import {profileAPI} from "../api/API";
+import {stopSubmit} from "redux-form";
 
 
 let initialState = {
@@ -34,22 +35,7 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: {...state.profile, photos: action.photos}}
         }
         case 'UPDATE-PROFILE-DATA': {
-            return {...state, profile: {...action.profile, contacts: {...action.profile.contacts}}}}
-
-
-                // profile: {...state.profile, aboutMe: action.profile.aboutMe,
-                //                                         lookingForAJob: action.profile.lookingForAJob,
-                //                                         lookingForAJobDescription: action.profile.lookingForAJobDescription,
-                //                                         fullName: action.profile.fullName,
-                //                     contacts: { facebook: action.profile.contacts.facebook,
-                //                                 website: action.profile.contacts.website,
-                //                                 vk:     action.profile.contacts.vk,
-                //                                 twitter: action.profile.contacts.twitter,
-                //                                 instagram: action.profile.contacts.instagram,
-                //                                 youtube: action.profile.contacts.youtube,
-                //                                 github: action.profile.contacts.github,
-                //                                 mainLink: action.profile.contacts.mainLink}}}}
-
+            return {...state, profile: {...action.profile}}}
         default:
             return state;
     }
@@ -99,6 +85,9 @@ export const updateProfileDataFromUIThunk = (profil) => {
         const response = await profileAPI.updateProfileDataFromUI(profil);
         if (response.data.resultCode === 0) {
             dispatch(updateProfileData(profil));
+        } else {
+            dispatch(stopSubmit('profile'));
+            // console.log(response.data.messages[0]);
         }
     }
 }
