@@ -1,5 +1,4 @@
 import * as axios from "axios";
-import {updateStatusFromUIThunk} from "../redux/profileReducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -27,11 +26,14 @@ export const authAPI = {
         return instance.get('auth/me').then(response => response.data);
     },
     logIn(email, password, rememberMe = false, captcha = false) {
-        return instance.post('/auth/login', {email, password, rememberMe, captcha}).then(response => response.data);
+        return instance.post('auth/login', {email, password, rememberMe, captcha}).then(response => response.data);
     },
     logOut() {
-        return instance.delete('/auth/login').then(response => response.data);
+        return instance.delete('auth/login').then(response => response.data);
     },
+    captcha() {
+        return instance.get('security/get-captcha-url').then(response => response.data.url);
+    }
 }
 
 export const profileAPI = {
@@ -47,7 +49,7 @@ export const profileAPI = {
     setPhoto(photo) {
         const formData = new FormData();
         formData.append('image', photo);
-        return instance.put('/profile/photo/', formData, {
+        return instance.put('profile/photo/', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             }

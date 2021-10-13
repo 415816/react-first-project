@@ -6,7 +6,8 @@ let stateInit = {
     login: null,
     email: null,
     isAuth: null,
-    isFetching: false
+    isFetching: false,
+    captcha: null,
 };
 
 const authReducer = (state = stateInit, action) => {
@@ -18,12 +19,20 @@ const authReducer = (state = stateInit, action) => {
                 isAuth: action.data.isAuth
             }
         }
+        case 'SET-URL-CAPTCHA': {
+            return {
+                ...state,
+                captcha: action.url
+            }
+        }
+
         default:
             return state;
     }
 }
 
 export const setAuthUser = (id, login, email, isAuth) => ({type: 'SET-AUTH-USER', data: {id, login, email, isAuth}});
+export const getCaptcha = (urlCaptcha) => ({type: 'SET-URL-CAPTCHA', url: urlCaptcha});
 
 export default authReducer;
 
@@ -34,11 +43,15 @@ export const authThunk = () => async (dispatch) => {
     }
 }
 
-export const logInThunk = (email, password, rememberMe) => async (dispatch) => {
-    const response = await authAPI.logIn(email, password, rememberMe);
+export const logInThunk = (email, password, rememberMe, captcha) => async (dispatch) => {
+    const response = await authAPI.logIn(email, password, rememberMe, captcha);
     if (response.resultCode === 0) {
         dispatch(authThunk());
     } else {
+        if (response.resultCode === 10) {
+            const response = await authAPI.captcha();
+            dispatch(getCaptcha(response));
+        }
         let action = stopSubmit('login', {_error: response.messages[0]});
         dispatch(action);
     }

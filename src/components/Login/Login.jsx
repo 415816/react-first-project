@@ -14,6 +14,8 @@ export const LoginForm = (props) => {
         {props.error && <div className={si.borderRed}>
             {props.error}
         </div>}
+        {props.captcha && <img src={props.captcha}/>}
+        {props.captcha && <div><Field component={Input} validate={[requaredField]} name={'captcha'} placeholder={'captcha'} type={'text'}/></div>}
         <div><button value={'btnLogin'}>Login</button></div>
     </form>
 }
@@ -23,7 +25,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 export const Login = (props) => {
     const onSubmit = (allData) => {
         console.log(allData.login, allData.pass, allData.rememberMe);
-        props.logInThunk(allData.login, allData.pass, allData.rememberMe);
+        props.logInThunk(allData.login, allData.pass, allData.rememberMe, allData.captcha);
     }
 
     if(props.isAuth) {
@@ -34,12 +36,13 @@ export const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm maxLength15={maxLength15} onSubmit={onSubmit}/>
+            <LoginReduxForm maxLength15={maxLength15} onSubmit={onSubmit} captcha={props.captcha}/>
         </div>
     )
 }
 const mapStateToProps = (state) => ({
-    isAuth: state.authReducer.isAuth
+    isAuth: state.authReducer.isAuth,
+    captcha: state.authReducer.captcha
 })
 
 export default connect(mapStateToProps, {logInThunk, logOutThunk})(Login);
