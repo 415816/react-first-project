@@ -1,7 +1,7 @@
 import './App.css';
 import SideBar from './components/SideBar/SideBar';
 import Settings from './components/Settings/Settings';
-import {BrowserRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, withRouter} from 'react-router-dom';
 import MessagesWrapper from "./components/Messages/MessagesWrapper";
 import UsersWrapper from "./components/Users/UsersWrapper";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -35,7 +35,7 @@ class App extends Component {
                     <HeaderContainer/>
                     <SideBar sidebar={this.props.sidebar}/>
                     <div>
-                        <Route exact path='/' render={() => <ProfileContainer/>}/>
+                        <Route exact path='/' render={() => <Redirect to={"/profile/"}/>}/>
                         <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
                         <Route path='/messages' render={() => <MessagesWrapper/>}/>
                         <React.Suspense fallback={<Preloader/>}>
@@ -55,6 +55,7 @@ class App extends Component {
 const mapStateToProps = (state) => ({
     initialized: state.appReducer.initialized
 })
+
 const AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initialize}))(App);
